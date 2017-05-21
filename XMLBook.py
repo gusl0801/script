@@ -1,27 +1,6 @@
 from xml.dom.minidom import parse, parseString
 from xml.etree import ElementTree
-
-xmlFD = -1
-bookDoc = None
-
-def LoadXMLFromFile():
-    global xmlFD, bookDoc
-    fileName = str(input("Please input file name to load! : "))
-
-    try:
-        xmlFD = open(fileName)
-    except IOError:
-        print("Invaild file path...")
-    else:
-        try:
-            dom = parse(xmlFD)
-        except Exception:
-            print("Parse error...")
-        else:
-            print("XML Document loading complete")
-            bookDoc = dom
-            return dom
-    return None
+from xml.dom import minidom
 
 class XMLBook:
     def __init__(self):
@@ -46,6 +25,10 @@ class XMLBook:
                 return dom
         return None
 
+    def LoadFromText(self, text):
+        self.document = minidom.parseString(text)
+        stopPosition = 1
+
     def ReleaseDocument(self):
         if self.checkDocument():
             self.document.unlink()
@@ -57,15 +40,22 @@ class XMLBook:
     def PrintBookList(self, tags):
         if not self.checkDocument():
             return None
+        count = 0
 
         bookList = self.document.childNodes
         book = bookList[0].childNodes
         for item in book:
-            if item.nodeName == 'book':
-                subitems = item.childNodes
-                for elem in subitems:
-                    if elem.nodeName in tags:
-                        print("title=", elem.firstChild.nodeValue)
+            if item.nodeName == 'body':
+                bodyNode = item.childNodes
+                for elem in bodyNode:       # items
+                    if elem.nodeName == 'items':
+                        for itemNode in elem.childNodes:
+                            for data in itemNode.childNodes:
+                                print(data.nodeName, "=", data.firstChild.nodeValue)
+                            print("=======================", count)
+                            count += 1
+                    #if elem.childNode.nodeName in tags:
+                    #    print("title=", elem.firstChild.nodeValue)
 
     def SearchBookTilte(self,keyword):
         if not self.checkDocument():
