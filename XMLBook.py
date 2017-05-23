@@ -37,7 +37,7 @@ class XMLBook:
         if self.checkDocument():
             print(self.document.toxml())
 
-    def PrintBookList(self, tags):
+    def PrintBookList(self):
         if not self.checkDocument():
             return None
         count = 0
