@@ -4,8 +4,8 @@ import requests
 from multiprocessing import Process, Queue
 
 conn = None
-regKey = '1ckRGPeUTj7n2EeO5dyg6aaV8FOMSVfUr%2FRc%2Bsp47rkQ8dqRTygAs3vZoJ%2BZ%2B%2BvkBJDqmHZh9lgOrNq%2FlEN6jQ%3D%3D'
-
+#regKey = '1ckRGPeUTj7n2EeO5dyg6aaV8FOMSVfUr%2FRc%2Bsp47rkQ8dqRTygAs3vZoJ%2BZ%2B%2BvkBJDqmHZh9lgOrNq%2FlEN6jQ%3D%3D'
+regKey = 'vFv%2BD0ZVc6q%2BHgQYvvUdYWFhq2D%2BOdeV9H%2BVfeGtfaeBFTmw1rtrBNPFL2bQGAOSgDwzh1gqpzv7zh2QwXxHkA%3D%3D'
 server = 'openapi-lib.sen.go.kr'
 libCodeList = ['MA', 'MB', 'MC', 'MD', 'ME', 'MF', 'MG', 'MH', 'MV', 'MJ', 'MK', 'ML',
                'MX', 'MM', 'MP', 'MW', 'MN', 'MQ', 'MR', 'MS', 'MT', 'MU']
@@ -97,7 +97,7 @@ def getBookDataFromTitle(title):
     return testList
     """
 
-def ProcessFunc(start, end, result):
+def ProcessFunc(start, end, result, keyword):
     global server, regKey, conn
 
     if conn == None:
@@ -108,7 +108,7 @@ def ProcessFunc(start, end, result):
     i = start
     for _ in range(start, end):
         uri = URIBuilder(server, serviceKey=regKey,
-                         title="도둑",
+                         title= keyword,
                          manageCd=libCodeList[i])
 
         req = requests.get(uri, headers=headers)
