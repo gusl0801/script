@@ -8,11 +8,11 @@ def getBookData(searchTag):
     print(START, int(END / 2), END)
 
     process_list = []
-
-    process_list.append(Process(target=ProcessFunc, args=(START, int(END / 4 * 1), result, searchTag)))
-    process_list.append(Process(target=ProcessFunc, args=(int(END / 4 * 1), int(END / 4 * 2), result, searchTag)))
-    process_list.append(Process(target=ProcessFunc, args=(int(END / 4 * 2), int(END / 4 * 3), result, searchTag)))
-    process_list.append(Process(target=ProcessFunc, args=(int(END / 4 * 3), END, result, searchTag)))
+    process_list.append(Process(target=ProcessFunc, args=(0, 1, result, searchTag)))
+    #process_list.append(Process(target=ProcessFunc, args=(START, int(END / 4 * 1), result, searchTag)))
+    #process_list.append(Process(target=ProcessFunc, args=(int(END / 4 * 1), int(END / 4 * 2), result, searchTag)))
+    #process_list.append(Process(target=ProcessFunc, args=(int(END / 4 * 2), int(END / 4 * 3), result, searchTag)))
+    #process_list.append(Process(target=ProcessFunc, args=(int(END / 4 * 3), END, result, searchTag)))
 
     for process in process_list:
         process.start()
@@ -36,7 +36,7 @@ if __name__ == '__main__':
             print("재진행 합니다")
             continue
 
-        PrintMenu()
+        # PrintMenu()
 
         while True:
             elem = result.get()

@@ -2,6 +2,7 @@ from XMLBook import *
 from http.client import HTTPConnection
 import requests
 from multiprocessing import Process, Queue
+import urllib
 
 conn = None
 #regKey = '1ckRGPeUTj7n2EeO5dyg6aaV8FOMSVfUr%2FRc%2Bsp47rkQ8dqRTygAs3vZoJ%2BZ%2B%2BvkBJDqmHZh9lgOrNq%2FlEN6jQ%3D%3D'
@@ -104,6 +105,7 @@ def ProcessFunc(start, end, result, keyword):
         connectOpenAPIServer()
 
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.0; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0'}
+    keyword = urllib.parse.quote(keyword)
 
     i = start
     for _ in range(start, end):
