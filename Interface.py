@@ -1,5 +1,7 @@
 # 검색할 도서 키워드
 import sys
+import DaumAPIServer
+import OpenAPIServer
 
 def PrintMenu():
     print("---------검색 기준--------------")
@@ -32,7 +34,6 @@ def MenuHandler(sel):
         return
     if sel is 'C' or sel is 'c':
         return
-
 
 def GetKeyword():
     return input("검색 키워드를 입력해주세요")
