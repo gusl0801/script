@@ -39,15 +39,10 @@ def getBookDataFromISBN(isbn):
     req = requests.get(uri, headers = headers)
 
     if req.status_code == 200:
+        b = XMLBook(api = 'daum')
+        b.LoadFromText(req.content)
+        result = b.SearchBooks(query = 'isbn', keyword = isbn)
 
-        d = minidom.parseString(req.content)
-        bookList = d.childNodes
-        book = bookList[0].childNodes
-        for elem in book:
-            if elem.nodeName == 'item':
-                print(elem.nodeName, sep = "=")
-                for node in elem.childNodes:
-                    print(node.firstChild.nodeName)
         print("Book data downloading complete!")
     else:
         print("OpenAPI request has been failed!! please retry")

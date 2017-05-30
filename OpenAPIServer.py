@@ -3,13 +3,14 @@ from http.client import HTTPConnection
 import requests
 from multiprocessing import Process, Queue
 import urllib
+import time
 
 conn = None
 #regKey = '1ckRGPeUTj7n2EeO5dyg6aaV8FOMSVfUr%2FRc%2Bsp47rkQ8dqRTygAs3vZoJ%2BZ%2B%2BvkBJDqmHZh9lgOrNq%2FlEN6jQ%3D%3D'
 regKey = 'vFv%2BD0ZVc6q%2BHgQYvvUdYWFhq2D%2BOdeV9H%2BVfeGtfaeBFTmw1rtrBNPFL2bQGAOSgDwzh1gqpzv7zh2QwXxHkA%3D%3D'
-'fCsP7thL6aSOrQGp0mrFUKF3r09CsgzFVMKwS8CVPDeYjSRJb263KAriJp7ihE5g7lA5r1eRkbE6fzNrkQQw6g%3D%3D'
-
-'ayXwapYyvKNjpOaOMxDeepxLGpnXBsJ96L51RvkgKiTBxpZRhaJBrrcbrXRcPkimlVNFd7BiqTee4ZX5VFJyIQ%3D%3D'
+keyList = []
+keyList.append('fCsP7thL6aSOrQGp0mrFUKF3r09CsgzFVMKwS8CVPDeYjSRJb263KAriJp7ihE5g7lA5r1eRkbE6fzNrkQQw6g%3D%3D')
+keyList.append('ayXwapYyvKNjpOaOMxDeepxLGpnXBsJ96L51RvkgKiTBxpZRhaJBrrcbrXRcPkimlVNFd7BiqTee4ZX5VFJyIQ%3D%3D')
 server = 'openapi-lib.sen.go.kr'
 libCodeList = ['MA', 'MB', 'MC', 'MD', 'ME', 'MF', 'MG', 'MH', 'MV', 'MJ', 'MK', 'ML',
                'MX', 'MM', 'MP', 'MW', 'MN', 'MQ', 'MR', 'MS', 'MT', 'MU']
@@ -110,24 +111,76 @@ def ProcessFunc(start, end, result, keyword):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.0; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0'}
     keyword = urllib.parse.quote(keyword)
 
-    i = start
-    for _ in range(start, end):
-        uri = URIBuilder(server, serviceKey=regKey,
-                         title= keyword,
-                         manageCd=libCodeList[i])
+    print("start,end", start, end)
+    for n in range(start, end):
+
+        uri = URIBuilder(server, serviceKey=keyList[0],
+                         title=keyword,
+                         manageCd=libCodeList[n])
+        #print(libCodeList[n])
 
         req = requests.get(uri, headers=headers)
-        print(req.raw)
-        print(req.content)
-        if req.status_code is 200:
-            data = XMLBook()
-            data.LoadFromText(req.content)
-            result.put(XMLBook())
+        result.put(req.content)
+        """
+        """
+        #result.put(n)
+        #time.sleep(0.1)
+        # print(req.content)
 
-        print(i)
-        i += 1
-    print("for end")
+    """
+    i = start
+    for _ in range(start, end):
+        uri = URIBuilder(server, serviceKey= keyList[0],
+                         title= keyword,
+                         manageCd=libCodeList[0])
+
+        req = requests.get(uri, headers=headers)
+
+        print(req.content)
+        print(req.status_code)
+        
+        if req.status_code is 200:
+            data = XMLBook(api = 'data')
+            data.LoadFromText(req.content)
+            result.append(data)
+            #print("test -----", result.qsize())
+            #result.put(data)
+            #print("test -----", result.qsize())
+            stop = 1
+
+        #i += 1
+    #print("for end", result.qsize())
+    """
+    print("process func end", result.qsize())
     return
+
+def PoolFunc(start, end, keyword):
+    global server, regKey, conn
+
+    if conn == None:
+        connectOpenAPIServer()
+
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.0; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0'}
+    keyword = urllib.parse.quote(keyword)
+
+    result = []
+    print("start,end", start, end)
+    for n in range(start, end):
+        uri = URIBuilder(server, serviceKey=keyList[1],
+                         title=keyword,
+                         manageCd=libCodeList[n])
+        # print(libCodeList[n])
+
+        req = requests.get(uri, headers=headers)
+        result.append(req.content)
+        """
+        """
+        # result.put(n)
+        # time.sleep(0.1)
+        # print(req.content)
+
+    print("pool func end", len(result))
+    return result
 
 def getBookData(searchTag):
     START, END = 0, len(libCodeList)

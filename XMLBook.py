@@ -3,9 +3,9 @@ from xml.etree import ElementTree
 from xml.dom import minidom
 
 class XMLBook:
-    def __init__(self):
+    def __init__(self, api):
         self.document = None
-        pass
+        self.api = api
 
     def LoadFromFile(self):
         fileName = str(input("Please input file name to load! : "))
@@ -27,7 +27,6 @@ class XMLBook:
 
     def LoadFromText(self, text):
         self.document = minidom.parseString(text)
-        stopPosition = 1
 
     def ReleaseDocument(self):
         if self.checkDocument():
@@ -36,6 +35,37 @@ class XMLBook:
     def PrintToXML(self):
         if self.checkDocument():
             print(self.document.toxml())
+
+    def SearchBooks(self, query, keyword):
+        """
+        d = minidom.parseString(req.content)
+        bookList = d.childNodes
+        book = bookList[0].childNodes
+        for elem in book:
+            if elem.nodeName == 'item':
+                for node in elem.childNodes:
+                    if node.nodeName == 'title':
+                        print("title =", node.firstChild.data)
+        """
+        #test = self.document.getElementByTagName(query)
+
+        resultNodes = []
+        if self.api == 'daum':
+            bookList = self.document.childNodes
+            book = bookList[0].childNodes
+
+            for elem in book:
+                if elem.nodeName == 'item':
+                    for node in elem.childNodes:
+                        if node.nodeName == query:
+                            resultNodes.append(elem)
+                            print(query, "=", node.firstChild.data)
+                            break
+
+        elif self.api == 'data':
+            pass
+        
+        return resultNodes
 
     def PrintBookList(self):
         if not self.checkDocument():
