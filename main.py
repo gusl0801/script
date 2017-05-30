@@ -1,6 +1,30 @@
 from OpenAPIServer import *
 from Interface import*
 from multiprocessing import Pool
+from DaumAPIServer import *
+
+def LibSearchButtonHandler(title):
+
+    textList = getBookDataPool(title)
+    #print("-----------------------get text queue data-----------------------")
+    bookList = []
+
+    #if len(textList) is not 0:
+    #    print("검색이 완료 되었습니다!", len(textList))
+    #else:
+    #    print("검색 결과가 없습니다 ㅜ.ㅜ")
+
+        # PrintMenu()
+    for i in range(len(textList)):
+        for j in range(len(textList[i])):
+            book = XMLBook(api='data')
+            book.LoadFromText(textList[i][j])
+            book.PrintBookList()
+            bookList.append(book)
+    #print("검색 결과 : ", len(bookList))
+    if len(bookList) != 0:
+       return bookList
+    return None
 
 def getBookData(searchTag):
     START, END = 0, len(libCodeList)
@@ -73,31 +97,21 @@ def getBookDataPool(searchTag):
     """ """
 
 if __name__ == '__main__':
+    interface = InterfaceManager(title ="소장도서 검색기", pos ='480x640+300+100')
+    interface.AllCreates()
+    interface.AllRegist()
 
+    interface.StartLoop()
+    """
     while True:
+    
         # keyword = GetKeyword()
         # textQueue = getBookDataL('도둑')
         textList = getBookDataPool('도둑')
         print("-----------------------get text queue data-----------------------")
         bookList = []
 
-        """
-        START, END = 0, len(libCodeList)
         
-        textQueue = Queue()
-
-        process_list = []
-        #process_list.append(Process(target=ProcessFunc, args=(0, 1, result, keyword)))
-        process_list.append(Process(target=ProcessFunc, args=(0, 1, textQueue, '도둑')))
-
-        for process in process_list:
-            process.start()
-
-        for process in process_list:
-            process.join()
-        
-        textQueue.put('STOP')
-        """
         if len(textList) is not 0:
             print("검색이 완료 되었습니다!", len(textList))
         else:
@@ -113,7 +127,11 @@ if __name__ == '__main__':
                 book.PrintBookList()
                 bookList.append(book)
         print("검색 결과 : ",len(bookList))
-        """
+        
+        break
+"""
+
+"""
         while True:
             elem = textQueue.get()
             if elem == 'STOP':
@@ -125,7 +143,23 @@ if __name__ == '__main__':
                 bookList.append(book)
         print("최종 결과 크기", len(bookList))
         """
-        break
+"""
+        START, END = 0, len(libCodeList)
+
+        textQueue = Queue()
+
+        process_list = []
+        #process_list.append(Process(target=ProcessFunc, args=(0, 1, result, keyword)))
+        process_list.append(Process(target=ProcessFunc, args=(0, 1, textQueue, '도둑')))
+
+        for process in process_list:
+            process.start()
+
+        for process in process_list:
+            process.join()
+
+        textQueue.put('STOP')
+        """
 """
     result = getBookData("도둑")
 
@@ -135,4 +169,5 @@ if __name__ == '__main__':
             break
         else:
             elem.PrintBookList()
+
 """

@@ -59,7 +59,7 @@ class XMLBook:
                     for node in elem.childNodes:
                         if node.nodeName == query:
                             resultNodes.append(elem)
-                            print(query, "=", node.firstChild.data)
+                            #(query, "=", node.firstChild.data)
                             break
 
         elif self.api == 'data':
@@ -86,6 +86,13 @@ class XMLBook:
                             count += 1
                     #if elem.childNode.nodeName in tags:
                     #    print("title=", elem.firstChild.nodeValue)
+    def getBookListStartPos(self):
+        if not self.checkDocument():
+            return None
+
+        bookList = self.document.childNodes
+        book = bookList[0].childNodes
+        return book
 
     def SearchBookTilte(self,keyword):
         if not self.checkDocument():
