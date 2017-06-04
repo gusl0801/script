@@ -5,6 +5,7 @@ import OpenAPIServer
 from tkinter import *
 from tkinter import font
 from main import LibSearchButtonHandler
+from mail import *
 
 radioButtonVar = None
 class InterfaceManager:
@@ -50,8 +51,12 @@ class InterfaceManager:
     def CreateButtons(self):
         self.buttons.append(InterfaceButton(self.window, (151,70), '      검색      '))
         self.buttons.append(InterfaceButton(self.window, (247,70), ' 도서관 찾기 '))
+        self.buttons.append(InterfaceButton(self.window, (20, 70), ' 메일 전송 '))
+
         for button in self.buttons:
             button.Create()
+
+        self.buttons[2].setHandlerFunc(SendMail)
 
     def CreateEntries(self):
         self.entries.append(InterfaceEntry(self.window, (150,40), ""))
@@ -123,6 +128,9 @@ class InterfaceButton(Interface):
         self.connList = None
         self.id = InterfaceButton.ID
         InterfaceButton.ID += 1
+
+    def setHandlerFunc(self,func):
+        self.interface.config(command = func)
 
     def handlerFunc(self):
         if self.id == 0:

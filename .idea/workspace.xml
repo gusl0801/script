@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfbbdda2-d244-4c74-9000-6797bb24f3a0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Interface.py" afterPath="$PROJECT_DIR$/Interface.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mail.py" afterPath="$PROJECT_DIR$/mail.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,28 +76,26 @@
       <file leaf-file-name="Interface.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Interface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2136">
-              <caret line="253" column="69" lean-forward="false" selection-start-line="238" selection-start-column="8" selection-end-line="253" selection-end-column="69" />
+            <state relative-caret-position="291">
+              <caret line="58" column="42" lean-forward="true" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
               <folding>
                 <element signature="e#13#23#0" expanded="true" />
-                <element signature="e#260#470#0" expanded="false" />
-                <element signature="e#506#643#0" expanded="false" />
-                <element signature="e#678#787#0" expanded="false" />
-                <element signature="e#825#1064#0" expanded="false" />
-                <element signature="e#1099#1121#0" expanded="false" />
-                <element signature="e#1159#1186#0" expanded="false" />
-                <element signature="e#1225#1446#0" expanded="false" />
-                <element signature="e#1485#1610#0" expanded="false" />
-                <element signature="e#1654#1980#0" expanded="false" />
-                <element signature="e#2016#2127#0" expanded="false" />
-                <element signature="e#2166#2382#0" expanded="false" />
-                <element signature="e#2421#2474#0" expanded="false" />
-                <element signature="e#2518#2588#0" expanded="false" />
-                <element signature="e#2624#2666#0" expanded="false" />
-                <element signature="e#2725#2737#0" expanded="false" />
-                <element signature="e#3119#5452#0" expanded="false" />
-                <element signature="e#5491#5915#0" expanded="false" />
-                <element signature="e#5960#6669#0" expanded="false" />
+                <element signature="e#279#489#0" expanded="false" />
+                <element signature="e#525#662#0" expanded="false" />
+                <element signature="e#697#806#0" expanded="false" />
+                <element signature="e#844#1083#0" expanded="false" />
+                <element signature="e#1118#1140#0" expanded="false" />
+                <element signature="e#1178#1205#0" expanded="false" />
+                <element signature="e#1634#1759#0" expanded="false" />
+                <element signature="e#1803#2129#0" expanded="false" />
+                <element signature="e#2165#2276#0" expanded="false" />
+                <element signature="e#2570#2623#0" expanded="false" />
+                <element signature="e#2667#2737#0" expanded="false" />
+                <element signature="e#2773#2815#0" expanded="false" />
+                <element signature="e#2874#2886#0" expanded="false" />
+                <element signature="e#5722#6146#0" expanded="false" />
+                <element signature="e#6191#6900#0" expanded="false" />
+                <element signature="e#6938#11169#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -125,8 +124,8 @@
       <file leaf-file-name="tkinter_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/tkinter_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="68" column="24" lean-forward="true" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
+            <state relative-caret-position="1224">
+              <caret line="68" column="24" lean-forward="false" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
               <folding>
                 <element signature="e#283#1069#1" expanded="false" />
               </folding>
@@ -137,9 +136,11 @@
       <file leaf-file-name="mail.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mail.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-21">
-              <caret line="62" column="36" lean-forward="true" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
-              <folding />
+            <state relative-caret-position="459">
+              <caret line="76" column="4" lean-forward="false" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+              <folding>
+                <element signature="e#1269#1285#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -185,17 +186,17 @@
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/DaumAPIServer.py" />
         <option value="$PROJECT_DIR$/OpenAPIServer.py" />
-        <option value="$PROJECT_DIR$/Interface.py" />
         <option value="$PROJECT_DIR$/test/tkinter_test.py" />
+        <option value="$PROJECT_DIR$/Interface.py" />
         <option value="$PROJECT_DIR$/mail.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="529" />
-    <option name="y" value="2" />
-    <option name="width" value="1401" />
-    <option name="height" value="1092" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -213,6 +214,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -241,12 +244,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../사용 중 프로젝트/Python-Script/python32-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -260,7 +261,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tkinter_test">
+  <component name="RunManager" selected="Python.main">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -424,8 +425,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.tkinter_test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.main" />
+        <item index="0" class="java.lang.String" itemvalue="Python.main" />
+        <item index="1" class="java.lang.String" itemvalue="Python.tkinter_test" />
         <item index="2" class="java.lang.String" itemvalue="Python.tkinter_ex" />
         <item index="3" class="java.lang.String" itemvalue="Python.Interface" />
         <item index="4" class="java.lang.String" itemvalue="Python.tkinter2" />
@@ -446,13 +447,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="529" y="2" width="1401" height="1092" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13304411" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1328125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3236212" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3236212" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32154006" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -488,7 +489,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="141" />
+      <option name="time" value="143" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -865,49 +866,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2136">
-          <caret line="253" column="69" lean-forward="false" selection-start-line="238" selection-start-column="8" selection-end-line="253" selection-end-column="69" />
-          <folding>
-            <element signature="e#13#23#0" expanded="true" />
-            <element signature="e#260#470#0" expanded="false" />
-            <element signature="e#506#643#0" expanded="false" />
-            <element signature="e#678#787#0" expanded="false" />
-            <element signature="e#825#1064#0" expanded="false" />
-            <element signature="e#1099#1121#0" expanded="false" />
-            <element signature="e#1159#1186#0" expanded="false" />
-            <element signature="e#1225#1446#0" expanded="false" />
-            <element signature="e#1485#1610#0" expanded="false" />
-            <element signature="e#1654#1980#0" expanded="false" />
-            <element signature="e#2016#2127#0" expanded="false" />
-            <element signature="e#2166#2382#0" expanded="false" />
-            <element signature="e#2421#2474#0" expanded="false" />
-            <element signature="e#2518#2588#0" expanded="false" />
-            <element signature="e#2624#2666#0" expanded="false" />
-            <element signature="e#2725#2737#0" expanded="false" />
-            <element signature="e#3119#5452#0" expanded="false" />
-            <element signature="e#5491#5915#0" expanded="false" />
-            <element signature="e#5960#6669#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/tkinter_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="68" column="24" lean-forward="true" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
+        <state relative-caret-position="1224">
+          <caret line="68" column="24" lean-forward="false" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
           <folding>
             <element signature="e#283#1069#1" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Interface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="58" column="42" lean-forward="true" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+          <folding>
+            <element signature="e#13#23#0" expanded="true" />
+            <element signature="e#279#489#0" expanded="false" />
+            <element signature="e#525#662#0" expanded="false" />
+            <element signature="e#697#806#0" expanded="false" />
+            <element signature="e#844#1083#0" expanded="false" />
+            <element signature="e#1118#1140#0" expanded="false" />
+            <element signature="e#1178#1205#0" expanded="false" />
+            <element signature="e#1634#1759#0" expanded="false" />
+            <element signature="e#1803#2129#0" expanded="false" />
+            <element signature="e#2165#2276#0" expanded="false" />
+            <element signature="e#2570#2623#0" expanded="false" />
+            <element signature="e#2667#2737#0" expanded="false" />
+            <element signature="e#2773#2815#0" expanded="false" />
+            <element signature="e#2874#2886#0" expanded="false" />
+            <element signature="e#5722#6146#0" expanded="false" />
+            <element signature="e#6191#6900#0" expanded="false" />
+            <element signature="e#6938#11169#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mail.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="62" column="36" lean-forward="true" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="459">
+          <caret line="76" column="4" lean-forward="false" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+          <folding>
+            <element signature="e#1269#1285#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
