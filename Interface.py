@@ -4,8 +4,8 @@ import DaumAPIServer
 import OpenAPIServer
 from tkinter import *
 from tkinter import font
-from main import LibSearchButtonHandler
-from mail import *
+from Main import LibSearchButtonHandler
+from Mail import *
 
 radioButtonVar = None
 class InterfaceManager:

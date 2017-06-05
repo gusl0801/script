@@ -74,7 +74,7 @@ def SendMail():
     s.close()
 
     print("1234")
-    
+
 #global value
 host = "smtp.gmail.com" # Gmail STMP 서버 주소.
 port = "587"
