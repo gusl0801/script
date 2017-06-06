@@ -1,3 +1,5 @@
+"""
+
 import MultiLineListBox MultiLineListBox
 
 from tkinter import *
@@ -18,6 +20,7 @@ lb.insert(1, "1234"+"\n"+"5678")
 
 lb.insert(2, text)
 roop.mainloop()
+"""
 
 """
 from tkinter import *
@@ -42,3 +45,17 @@ label.pack()
 label.place(x=0, y=0)
 root.mainloop()
 """
+
+from MultiLineListBox import *
+
+#items = ["123", "456", "789","10"]
+#ListBox = MutliLine_Single(items)
+#ListBox.run_selector(True)
+
+testitems = 'mama', 'luigi', 'my birds', '', \
+                'this is a single element\n spanning two lines!', '', \
+                'here is one\n that ought to span\n three whole lines!!'
+testtitle = 'TESTING A MULTILINE LISTBOX'
+
+SELECTOR = MutliLine_Single(testitems, testtitle, divider_string='', abort_value='<Aborted the selector!>')
+result = SELECTOR.run_selector(True)

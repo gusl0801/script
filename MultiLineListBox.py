@@ -20,7 +20,7 @@ class MutliLine_Single(object):
 in its strings. Some extended functionality that replaces falsey list elements with the
 `divider_string` argument text. Falsey elements are not selectable.'''
 
-    def __init__(self, items, title='', width=20, divider_string='', return_index=False, abort_value=None):
+    def __init__(self, frame, items, title='', width=20, divider_string='', return_index=False, abort_value=None):
         '''A Listbox selector that allows the use of string entries spanning multiple lines.
 Strings are broken on normal line breaks (`\n`). If the pane window is closed or cancelled,
 `abort_value` or `None` is returned. Otherwise, the complete, selected value is returned, if
@@ -50,25 +50,12 @@ abort_value     <any>                   If the selector window is closed or canc
 '''
         from tkinter import TOP, RIGHT, LEFT, BOTTOM, Y
 
-        self.root = tkroot = Tk.Tk()
-
-        if title:
-            tkroot.title(title)
-
-        lb_frame = Tk.Frame(tkroot)
-        lb_frame.pack(side=TOP, padx=6, pady=4)
-
-        lb_scrollbar = Tk.Scrollbar(lb_frame)
-        lb_scrollbar.pack(side=RIGHT, fill=Y)
-
-        self.lb = lb = Tk.Listbox(lb_frame, selectmode=Tk.SINGLE,
+        self.lb = lb = Tk.Listbox(frame, selectmode=Tk.SINGLE,
                                   width=width)  # I am working on a MULTIPLE variant of this!
         lb.pack(side=LEFT, fill=Y)
-        lb_scrollbar.config(command=lb.yview)
-        lb.config(yscrollcommand=lb_scrollbar.set)
 
         self.return_index = return_index  # return the item index, rather than the string proper?
-        self.abort_value = abort_value  # return this value on WM_DELETE_WINDOW or cancel.
+        self.abort_value = abort_value    # return this value on WM_DELETE_WINDOW or cancel.
 
         self.index_sets = []
         # ^ A list of Listbox element items and the other lines they're
@@ -97,17 +84,17 @@ abort_value     <any>                   If the selector window is closed or canc
 
         self.lastselection = None  # the last Listbox item selected.
 
-        tkroot.bind('<Return>', self._transmit)
-        tkroot.bind('<Escape>', self._abort)
-        tkroot.protocol('WM_DELETE_WINDOW', self._abort)
+        #tkroot.bind('<Return>', self._transmit)
+        #tkroot.bind('<Escape>', self._abort)
+        #tkroot.protocol('WM_DELETE_WINDOW', self._abort)
 
         lb.bind('<<ListboxSelect>>', self._reselect)
 
-        transmit_btn = Tk.Button(tkroot, text='Confirm', command=self._transmit)
-        transmit_btn.pack(side=BOTTOM, pady=4)
+        #transmit_btn = Tk.Button(tkroot, text='Confirm', command=self._transmit)
+        #transmit_btn.pack(side=BOTTOM, pady=4)
 
-        clear_btn = Tk.Button(tkroot, text='Clear', command=self._clear)
-        clear_btn.pack(side=BOTTOM)
+        #clear_btn = Tk.Button(tkroot, text='Clear', command=self._clear)
+        #clear_btn.pack(side=BOTTOM)
 
     def _parse_strings(self, string_list):
         '''Accepts a list of strings and breaks each string into a series of lines,
@@ -199,7 +186,6 @@ The `force_focus` argument, if truey, will immediately give the new selector pan
 
         ####
 
-
 def test():
     "Test a MutliLine_Single object."
 
@@ -213,5 +199,6 @@ def test():
 
     print("result: ", result)
     print(repr(result))
+
 if __name__ == '__main__':
     test()
