@@ -15,12 +15,12 @@ Thank you. <3
 import tkinter as Tk
 
 
-class MutliLine_Single(object):
+class MutliLine_Single:
     '''A basic Tkinter Listbox single-selection window that allows the use of carriage returns
 in its strings. Some extended functionality that replaces falsey list elements with the
 `divider_string` argument text. Falsey elements are not selectable.'''
 
-    def __init__(self, frame, items, title='', width=20, divider_string='', return_index=False, abort_value=None):
+    def __init__(self, frame, items, width=20, divider_string='', return_index=False):
         '''A Listbox selector that allows the use of string entries spanning multiple lines.
 Strings are broken on normal line breaks (`\n`). If the pane window is closed or cancelled,
 `abort_value` or `None` is returned. Otherwise, the complete, selected value is returned, if
@@ -31,7 +31,6 @@ items           tuplist of strings      Items to be included in the Listbox list
                                          - Falsey elements are interpreted as spacers in the list
                                           and are not selectable.
     = optional arguments
-title           string                  Listbox pane title. (def: '')
 width           nonzero positive int    Listbox width, in characters (not px!) (def: 20)
 divider_string  string                  Falsey values (including `''`) in the items list will be
                                           replaced with this string when displayed in the Listbox.
@@ -49,13 +48,14 @@ abort_value     <any>                   If the selector window is closed or canc
                                           will be returned. (def: None)
 '''
         from tkinter import TOP, RIGHT, LEFT, BOTTOM, Y
+        from tkinter import SEL_LAST, SEL_FIRST, END, FIRST
+        self.root = frame
 
         self.lb = lb = Tk.Listbox(frame, selectmode=Tk.SINGLE,
                                   width=width)  # I am working on a MULTIPLE variant of this!
         lb.pack(side=LEFT, fill=Y)
 
         self.return_index = return_index  # return the item index, rather than the string proper?
-        self.abort_value = abort_value    # return this value on WM_DELETE_WINDOW or cancel.
 
         self.index_sets = []
         # ^ A list of Listbox element items and the other lines they're
@@ -79,22 +79,15 @@ abort_value     <any>                   If the selector window is closed or canc
 
         lb_elements = self._parse_strings(items)
         # ^ Get a list of divided strings to put in the Listbox.
-
+        print(lb_elements)
         lb.insert(0, *lb_elements)
 
         self.lastselection = None  # the last Listbox item selected.
 
-        #tkroot.bind('<Return>', self._transmit)
-        #tkroot.bind('<Escape>', self._abort)
-        #tkroot.protocol('WM_DELETE_WINDOW', self._abort)
-
         lb.bind('<<ListboxSelect>>', self._reselect)
 
-        #transmit_btn = Tk.Button(tkroot, text='Confirm', command=self._transmit)
-        #transmit_btn.pack(side=BOTTOM, pady=4)
-
-        #clear_btn = Tk.Button(tkroot, text='Clear', command=self._clear)
-        #clear_btn.pack(side=BOTTOM)
+        tp = ('test', 'Hello\nWorld\n!!!')
+        self._insert(tp)
 
     def _parse_strings(self, string_list):
         '''Accepts a list of strings and breaks each string into a series of lines,
@@ -104,7 +97,7 @@ logs the sets, and stores them in the item_roster and string_register attributes
         REG_INDEX = self.return_index  # register the item's index in the string list if truey.
 
         all_lines = []  # holds all strings after lines are split. used for Lb elements.
-        line_number = 0
+        line_number = self.lb.index(Tk.END)
         for n, item in enumerate(string_list):  # string_register: `n` is saved if REG_INDEX, else `item`
             if not item:  # null strings or falsey elemetns add a blank space. useful organizationally.
                 self.null_indices.append(line_number)  # record the blank position
@@ -154,6 +147,12 @@ logs the sets, and stores them in the item_roster and string_register attributes
         self.lb.selection_set(lines_st, lines_ed)  # select all relevant lines
         self.lastselection = lines_st  # remember what you selected last.
 
+        data = self.lb.get(lines_st, lines_ed)
+        retText = ""
+        for i in range(len(data)):
+            retText += data[i]
+        print(retText)
+
     def _clear(self, event=None):
         "Clears the current selection."
         selection = self.lb.curselection()  # Get the currently selected item(s).
@@ -162,43 +161,11 @@ logs the sets, and stores them in the item_roster and string_register attributes
         self.lb.selection_clear(selection[0], selection[-1])  # deselect..
         self.lastselection = None  # ..and remember that you deselected!
 
-    def _transmit(self, event=None):
-        "Return whatever you currently have selected."
-        if self.lastselection is None:  # Nothing selected.
-            self.result = None
-        else:  # Store the result in the `result` attr.
-            self.result = self.string_register[self.lastselection]
-        self.lb.destroy()
+    def _clear_all(self):
+        self.lb.delete(0, Tk.END)
 
-    def _abort(self, event=None):
-        "Cancel out and return a preset or default abort value."
-        self.result = self.abort_value
-        self.lb.destroy()
+    def _insert(self, items):
+        lb_elements = self._parse_strings(items)
+        self.lb.insert(Tk.END, *lb_elements)
+        pass
 
-    def run_selector(self, force_focus=False):
-        '''Run the selector and return the selection (or None) once complete.
-The `force_focus` argument, if truey, will immediately give the new selector pane focus.'''
-        if force_focus:
-            self.root.focus_force()
-        self.root.wait_window(self.lb)
-        self.root.destroy()
-        return self.result
-
-        ####
-
-def test():
-    "Test a MutliLine_Single object."
-
-    testitems = 'mama', 'luigi', 'my birds', '', \
-                'this is a single element\n spanning two lines!', '', \
-                'here is one\n that ought to span\n three whole lines!!'
-    testtitle = 'TESTING A MULTILINE LISTBOX'
-
-    SELECTOR = MutliLine_Single(testitems, testtitle, divider_string='~~~', abort_value='<Aborted the selector!>')
-    result = SELECTOR.run_selector(True)
-
-    print("result: ", result)
-    print(repr(result))
-
-if __name__ == '__main__':
-    test()
