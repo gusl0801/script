@@ -7,6 +7,8 @@ from tkinter import font
 from Main import LibSearchButtonHandler
 from Mail import *
 
+from MultiLineListBox import MutliLine_Single
+
 radioButtonVar = None
 class InterfaceManager:
     def __init__(self, title, pos, color = 'gray'):
@@ -240,44 +242,79 @@ class InterfaceList(Interface):
     def __init__(self, parent, pos, text):
         super().__init__(parent,pos,text)
         self.count = 1
+
     def handlerFunc(self):
         pass
 
     def Create(self):
-        self.scrollbar = Scrollbar(self.parent)
-        self.scrollbar_ = Scrollbar(self.parent, orient = 'horizontal')
-        self.scrollbar.pack(fill=Y)
+        #480x640
+        self.frame = Frame(self.parent, bd=2, relief=RAISED, width=450, height= 500)
 
-        self.listBox = Listbox(self.parent, activestyle='none',
-                                width = 60, height=30, borderwidth=3, relief='groove',
-                                yscrollcommand=self.scrollbar.set,
-                               xscrollcommand = self.scrollbar_.set)
+        self.scrollbar_ver = Scrollbar(self.frame, orient = 'vertical')
+        self.scrollbar_hor = Scrollbar(self.frame, orient = 'horizontal')
 
-        self.scrollbar.config(command=self.listBox.yview)
-        self.scrollbar_.config(command = self.listBox.xview)
+        self.lb = MutliLine_Single(self.frame, "", yscrollcommand= self.scrollbar_ver.set,
+                                  xscrollcommand=self.scrollbar_hor.set,
+                                  width = 60, height = '30', borderwidth = 3, relief = 'groove')
+
+        self.scrollbar_ver.config(command = self.lb._get_lb().yview)
+        self.scrollbar_hor.config(command = self.lb._get_lb().xview)
+        """
+               self.scrollbar = Scrollbar(self.parent)
+               self.scrollbar_ = Scrollbar(self.parent, orient = 'horizontal')
+               self.scrollbar.pack(fill=Y)
+
+               self.listBox = Listbox(self.parent, activestyle='none',
+                                       width = 60, height=30, borderwidth=3, relief='groove',
+                                       yscrollcommand=self.scrollbar.set,
+                                      xscrollcommand = self.scrollbar_.set)
+
+               self.scrollbar.config(command=self.listBox.yview)
+               self.scrollbar_.config(command = self.listBox.xview)
+               """
 
     def Regist(self):
+        self.frame.place(x = self.pos[0], y = self.pos[1])
+        self.scrollbar_ver.pack(side = RIGHT, fill = Y)
+
+        self.lb.pack()
+
+        self.scrollbar_hor.pack(side = BOTTOM, fill = X)
+        #self.lb._place()
+        #self.scrollbar.place(x=self.pos[0] + 440, y=self.pos[1])
+        #self.scrollbar_.place(x=self.pos[0], y=self.pos[1] + 500)
+
+        """
         self.listBox.place(x = self.pos[0], y = self.pos[1])
         self.scrollbar.place(x = self.pos[0] + 440, y = self.pos[1])
         self.scrollbar_.place(x = self.pos[0], y = self.pos[1] + 500)
+        """
+
         #self.scrollbar.grid(sticky="EW")
 
     def AddBookElements(self, elemList):
+        self.clear()
         for elem in elemList:
             stop = 1
+            new_data_flag = False
             text = str()
             for child in elem.childNodes:
                 if child.nodeName == 'author' :
                     if child.firstChild != None:
                         text += 'author : ' + str(child.firstChild.data) + '  \n'
+                        new_data_flag = True
                 elif child.nodeName == 'isbn':
                     if child.firstChild != None:
                         text += 'isbn : ' + str(child.firstChild.data)+ '   \n'
+                        new_data_flag = True
                 elif child.nodeName == 'title':
                     if child.firstChild != None:
                         text += 'title : ' + str(child.firstChild.data)+ '   \n'
-            print(text)
-            self.listBox.insert(self.count, text)
+                        new_data_flag = True
+
+            tp = (text, "")
+            #self.listBox.insert(self.count, text)
+            self.lb._insert(tp)
             self.count += 1
 
     def AddLibDataDom(self, domList):
@@ -303,7 +340,10 @@ class InterfaceList(Interface):
                                     foundNum += 1
                                     #print(data.nodeName, "=", data.firstChild.nodeValue)
                                     #print(data.nodeName, "=", data.firstChild.nodeValue, "data : ", data.firstChild.data)
-                                self.listBox.insert(self.count, text)
+                                tp = (text, "")
+                                self.lb._insert(tp)
+
+                                #self.listBox.insert(self.count, text)
                                 self.count += 1
         if foundNum != 0:
 
@@ -327,14 +367,17 @@ class InterfaceList(Interface):
         pass
 
     def clear(self):
-        self.listBox.delete(0, END)
-        self.count = 1
+        self.lb._clear_all()
+        #self.listBox.delete(0, END)
+        #self.count = 1
+
 
     def getData(self):
-        sel = self.listBox.curselection()
-        if len(sel) == 1:
-            data = self.listBox.get(1)
-            return data
+        return self.lb._get_selected_items()
+        #sel = self.listBox.curselection()
+        #if len(sel) == 1:
+        #    data = self.listBox.get(1)
+        #    return data
 
 def PrintMenu():
     print("---------검색 기준--------------")

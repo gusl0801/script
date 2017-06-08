@@ -20,7 +20,7 @@ class MutliLine_Single:
 in its strings. Some extended functionality that replaces falsey list elements with the
 `divider_string` argument text. Falsey elements are not selectable.'''
 
-    def __init__(self, frame, items, width=20, divider_string='', return_index=False):
+    def __init__(self, frame, items,yscrollcommand, xscrollcommand, **infos):
         '''A Listbox selector that allows the use of string entries spanning multiple lines.
 Strings are broken on normal line breaks (`\n`). If the pane window is closed or cancelled,
 `abort_value` or `None` is returned. Otherwise, the complete, selected value is returned, if
@@ -52,10 +52,16 @@ abort_value     <any>                   If the selector window is closed or canc
         self.root = frame
 
         self.lb = lb = Tk.Listbox(frame, selectmode=Tk.SINGLE,
-                                  width=width)  # I am working on a MULTIPLE variant of this!
-        lb.pack(side=LEFT, fill=Y)
+                                  yscrollcommand = yscrollcommand,
+                                  xscrollcommand = xscrollcommand,
+                                  width= infos['width'],
+                                  height = infos['height'],
+                                  borderwidth = infos['borderwidth'],
+                                  relief= infos['relief'])  # I am working on a MULTIPLE variant of this!
 
-        self.return_index = return_index  # return the item index, rather than the string proper?
+        #lb.pack(side=LEFT, fill=Y)
+
+        self.return_index = False  # return the item index, rather than the string proper?
 
         self.index_sets = []
         # ^ A list of Listbox element items and the other lines they're
@@ -73,21 +79,18 @@ abort_value     <any>                   If the selector window is closed or canc
         # ^ A list of index values for blank lines (`''` strings).
         #  All they do is clear the selection.
 
-        self.NULL_MARKER = divider_string or ''
+        self.NULL_MARKER = ''
         # ^ If you include blank strings (`''`), they will be replaced
         #  with these characters in the list. Useful organizationally.
 
         lb_elements = self._parse_strings(items)
         # ^ Get a list of divided strings to put in the Listbox.
-        print(lb_elements)
+
         lb.insert(0, *lb_elements)
 
         self.lastselection = None  # the last Listbox item selected.
 
         lb.bind('<<ListboxSelect>>', self._reselect)
-
-        tp = ('test', 'Hello\nWorld\n!!!')
-        self._insert(tp)
 
     def _parse_strings(self, string_list):
         '''Accepts a list of strings and breaks each string into a series of lines,
@@ -147,11 +150,11 @@ logs the sets, and stores them in the item_roster and string_register attributes
         self.lb.selection_set(lines_st, lines_ed)  # select all relevant lines
         self.lastselection = lines_st  # remember what you selected last.
 
-        data = self.lb.get(lines_st, lines_ed)
-        retText = ""
-        for i in range(len(data)):
-            retText += data[i]
-        print(retText)
+        #data = self.lb.get(lines_st, lines_ed)
+        #retText = ""
+        #for i in range(len(data)):
+        #    retText += data[i]
+        #print(retText)
 
     def _clear(self, event=None):
         "Clears the current selection."
@@ -161,7 +164,17 @@ logs the sets, and stores them in the item_roster and string_register attributes
         self.lb.selection_clear(selection[0], selection[-1])  # deselect..
         self.lastselection = None  # ..and remember that you deselected!
 
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------
     def _clear_all(self):
+        self._clear()
+        self.index_sets.clear()
+        self.string_register.clear()
+        self.null_indices.clear()
         self.lb.delete(0, Tk.END)
 
     def _insert(self, items):
@@ -169,3 +182,26 @@ logs the sets, and stores them in the item_roster and string_register attributes
         self.lb.insert(Tk.END, *lb_elements)
         pass
 
+    def _place(self, x, y):
+        self.lb.place(x = x, y = y)
+
+    def pack(self, *options):
+        self.lb.pack()
+    def _get_selected_items(self):
+        selection = self.lb.curselection()  # Get the new selection data.
+
+        lines_st, lines_ed = self.index_sets[selection[0]]
+        # ^ Get the string block associated with the current selection.
+
+        data = self.lb.get(lines_st, lines_ed)
+
+        retText = ""
+
+        for i in range(len(data)):
+            retText += data[i]
+
+        print(retText)
+        return retText
+
+    def _get_lb(self):
+        return self.lb

@@ -45,21 +45,27 @@ label.pack()
 label.place(x=0, y=0)
 root.mainloop()
 """
-from tkinter import *
-from MultiLineListBox import *
-
+from test.Tkinter_test1 import *
 #items = ["123", "456", "789","10"]
 #ListBox = MutliLine_Single(items)
 #ListBox.run_selector(True)
 
-testitems = 'mama', 'luigi', 'my birds', \
-                'this is a single element\n spanning two lines!',  \
-                'here is one\n that ought to span\n three whole lines!!'
+testitems = 'mama', 'luigi', 'my birds', '',\
+                'this is a single element\n spanning two lines!', '',\
+                'here is one\n that ought to span\n three whole lines!!', ""
+testtitle = 'TESTING A MULTILINE LISTBOX'
 
-frame = Tk.Tk()
-SELECTOR = MutliLine_Single(frame, "", divider_string='')
-#result = SELECTOR.run_selector(True)
+SELECTOR = MutliLine_Single(testitems,divider_string='~~~', abort_value='<Aborted the selector!>')
 
-frame.geometry('480x640+300+100')
-frame.mainloop()
+tp = '123\n456\n789"',''
+SELECTOR._insert(tp)
+SELECTOR._insert(tp)
+SELECTOR._insert(tp)
+SELECTOR._insert(tp)
+
+SELECTOR._clear_all()
+
+for i in range(13):
+    SELECTOR._insert(tp)
+result = SELECTOR.run_selector(True)
 #print(result)

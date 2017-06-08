@@ -166,7 +166,7 @@ def PoolFunc(start, end, keyword):
     result = []
     print("start,end", start, end)
     for n in range(start, end):
-        uri = URIBuilder(server, serviceKey=keyList[1],
+        uri = URIBuilder(server, serviceKey=keyList[0],
                          title=keyword,
                          manageCd=libCodeList[n])
         # print(libCodeList[n])
