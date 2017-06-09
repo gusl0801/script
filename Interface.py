@@ -9,6 +9,10 @@ from Mail import *
 
 from MultiLineListBox import MutliLine_Single
 
+from io import BytesIO
+import urllib.request
+from PIL import Image, ImageTk
+
 radioButtonVar = None
 class InterfaceManager:
     def __init__(self, title, pos, color = 'gray'):
@@ -21,6 +25,7 @@ class InterfaceManager:
         self.entries = []
         self.radioButtons = []
         self.List = []
+        self.label = []
 
     def AllCreates(self):
         self.CreateWindow()
@@ -28,12 +33,14 @@ class InterfaceManager:
         self.CreateEntries()
         self.CreateRadioButtons()
         self.CreateList()
+        self.CreateLabel()
 
     def AllRegist(self):
         self.RegistButtons()
         self.RegistEntries()
         self.RegistRadioButtons()
         self.RegistList()
+        self.RegistLabel()
 
     def CreateWindow(self):
         global radioButtonVar
@@ -78,6 +85,11 @@ class InterfaceManager:
 
         for l in self.List:
             l.Create()
+    def CreateLabel(self):
+        self.label.append(InterfaceLabel(self.window, (10,10)))
+
+        for l in self.label:
+            l.Create()
 
     def RegistButtons(self):
         for button in self.buttons:
@@ -96,6 +108,11 @@ class InterfaceManager:
 
     def RegistList(self):
         for l in self.List:
+            l.Regist()
+        self.List[0].connectLabel(self.label[0])
+
+    def RegistLabel(self):
+        for l in self.label:
             l.Regist()
 
     def AppendBookData(self, elements, idx = 0):
@@ -242,6 +259,7 @@ class InterfaceList(Interface):
     def __init__(self, parent, pos, text):
         super().__init__(parent,pos,text)
         self.count = 1
+        self.connected_label = None
 
     def handlerFunc(self):
         pass
@@ -294,28 +312,48 @@ class InterfaceList(Interface):
 
     def AddBookElements(self, elemList):
         self.clear()
+        url_list = []
+        line_count = 0
+        c = 0
+        url = None
+        find_url = None
         for elem in elemList:
-            stop = 1
-            new_data_flag = False
             text = str()
+            last_line = 0
             for child in elem.childNodes:
                 if child.nodeName == 'author' :
                     if child.firstChild != None:
                         text += 'author : ' + str(child.firstChild.data) + '  \n'
-                        new_data_flag = True
+                        line_count += 1
+                        last_line += 1
                 elif child.nodeName == 'isbn':
                     if child.firstChild != None:
                         text += 'isbn : ' + str(child.firstChild.data)+ '   \n'
-                        new_data_flag = True
+                        line_count += 1
+                        last_line += 1
                 elif child.nodeName == 'title':
                     if child.firstChild != None:
                         text += 'title : ' + str(child.firstChild.data)+ '   \n'
-                        new_data_flag = True
-
+                        line_count += 1
+                        last_line += 1
+                elif child.nodeName == 'cover_l_url':
+                    if child.firstChild != None:
+                        line_count += 1
+                        last_line += 1
+                        find_url = True
+                        url = child.firstChild.data
+            if find_url is False:
+                line_count += 1
+            url_list.append((url, line_count - last_line))
+            url = None
+            find_url = False
             tp = (text, "")
-            #self.listBox.insert(self.count, text)
             self.lb._insert(tp)
-            self.count += 1
+
+        if len(url_list) != 0:
+            self.connected_label.setUrls(url_list)
+            for c in url_list:
+                print(c)
 
     def AddLibDataDom(self, domList):
         foundNum = 0
@@ -338,8 +376,6 @@ class InterfaceList(Interface):
                                     if foundNum == 0:
                                         self.clear()
                                     foundNum += 1
-                                    #print(data.nodeName, "=", data.firstChild.nodeValue)
-                                    #print(data.nodeName, "=", data.firstChild.nodeValue, "data : ", data.firstChild.data)
                                 tp = (text, "")
                                 self.lb._insert(tp)
 
@@ -352,19 +388,10 @@ class InterfaceList(Interface):
         else:
             print("찾으시는 도서를 소장하고 있는 도서관이 없습니다")
             return False
-        """
-        bookList = self.document.childNodes
-        book = bookList[0].childNodes
-        for item in book:
-            if item.nodeName == 'body':
-                bodyNode = item.childNodes
-                for elem in bodyNode:  # items
-                    if elem.nodeName == 'items':
-                        for itemNode in elem.childNodes:
-                            for data in itemNode.childNodes:
-                                print(data.nodeName, "=", data.firstChild.nodeValue)
-"""
-        pass
+
+    def connectLabel(self, label):
+        self.connected_label = label
+        self.lb.connect_label(label)
 
     def clear(self):
         self.lb._clear_all()
@@ -378,6 +405,63 @@ class InterfaceList(Interface):
         #if len(sel) == 1:
         #    data = self.listBox.get(1)
         #    return data
+
+class InterfaceLabel(Interface):
+    def __init__(self, parent, pos):
+        super().__init__(parent,pos, "")
+        self.url_list = None
+
+    def handlerFunc(self):
+        pass
+
+    def Create(self):
+        self.frame = Frame(self.parent, bd=2, relief=RAISED, width= 100, height= 100, background = 'blue')
+        #self.label = Label(self.frame, height=100, width=100)
+
+        pass
+
+    def Regist(self):
+        self.frame.place(x = self.pos[0], y= self.pos[1])
+        #self.label.pack()
+        #self.label.place(x=0,y=0)
+
+
+        #self.label.place(x=100,y=100)
+        pass
+
+    def PresentImage(self, raw_index):
+        index = self.FindIndex(raw_index)
+        print(index)
+        if index is None:
+            return
+        print("url : {0}, index : {1}".format(self.url_list[index][0],index))
+        url = self.url_list[index][0]
+        with urllib.request.urlopen(url) as u:
+            raw_data = u.read()
+
+        image_file = Image.open(BytesIO(raw_data))
+        #if image_file is None:
+        #    print("연결된 url이미지가 없습니다")
+        #    return
+
+        image_file = image_file.resize((100, 100), Image.ANTIALIAS)
+        image = ImageTk.PhotoImage(image_file)
+        self.label = Label(self.frame, image = image, height=100, width=100)
+        self.label.image = image
+        self.label.pack()
+        self.label.place(x=0,y=0)
+
+    def FindIndex(self, raw_index):
+        index = 0
+        for tp in self.url_list:    # tuple
+            if tp[1] == raw_index:
+                return index
+            index += 1
+
+        return None
+
+    def setUrls(self, url_list):
+        self.url_list = url_list
 
 def PrintMenu():
     print("---------검색 기준--------------")

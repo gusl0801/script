@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfbbdda2-d244-4c74-9000-6797bb24f3a0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DaumAPIServer.py" afterPath="$PROJECT_DIR$/DaumAPIServer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Interface.py" afterPath="$PROJECT_DIR$/Interface.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MultiLineListBox.py" afterPath="$PROJECT_DIR$/MultiLineListBox.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpenAPIServer.py" afterPath="$PROJECT_DIR$/OpenAPIServer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/Tkinter_test1.py" afterPath="$PROJECT_DIR$/test/Tkinter_test1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/tkinter_list_test.py" afterPath="$PROJECT_DIR$/test/tkinter_list_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/tkinter_test.py" afterPath="$PROJECT_DIR$/test/tkinter_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XMLBook.py" afterPath="$PROJECT_DIR$/XMLBook.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,55 +17,48 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="tkinter_list_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/tkinter_list_test.py">
+      <file leaf-file-name="Interface.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Interface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="674">
-              <caret line="68" column="18" lean-forward="false" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+            <state relative-caret-position="-1606">
+              <caret line="367" column="23" lean-forward="true" selection-start-line="367" selection-start-column="23" selection-end-line="367" selection-end-column="23" />
+              <folding>
+                <element signature="e#13#23#0" expanded="true" />
+                <element signature="e#1046#1285#0" expanded="false" />
+                <element signature="e#1320#1342#0" expanded="false" />
+                <element signature="e#1380#1407#0" expanded="false" />
+                <element signature="e#1836#1961#0" expanded="false" />
+                <element signature="e#2005#2331#0" expanded="false" />
+                <element signature="e#3013#3083#0" expanded="false" />
+                <element signature="e#3349#3361#0" expanded="false" />
+                <element signature="e#3384#3703#0" expanded="false" />
+                <element signature="e#6197#6621#0" expanded="false" />
+                <element signature="e#6666#7375#0" expanded="false" />
+                <element signature="e#8275#8924#1" expanded="false" />
+                <element signature="e#14936#15269#0" expanded="false" />
+                <element signature="e#15297#15681#0" expanded="false" />
+                <element signature="e#15705#15735#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python36/Lib/tkinter/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="2136" column="0" lean-forward="false" selection-start-line="2136" selection-start-column="0" selection-end-line="2136" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Interface.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Interface.py">
+      <file leaf-file-name="DaumAPIServer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DaumAPIServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="281" column="45" lean-forward="false" selection-start-line="281" selection-start-column="45" selection-end-line="281" selection-end-column="45" />
-              <folding>
-                <element signature="e#13#23#0" expanded="true" />
-                <element signature="e#326#536#0" expanded="false" />
-                <element signature="e#572#709#0" expanded="false" />
-                <element signature="e#744#853#0" expanded="false" />
-                <element signature="e#891#1130#0" expanded="false" />
-                <element signature="e#1165#1187#0" expanded="false" />
-                <element signature="e#1225#1252#0" expanded="false" />
-                <element signature="e#1291#1642#0" expanded="false" />
-                <element signature="e#1681#1806#0" expanded="false" />
-                <element signature="e#1850#2176#0" expanded="false" />
-                <element signature="e#2362#2578#0" expanded="false" />
-                <element signature="e#2617#2670#0" expanded="false" />
-                <element signature="e#2714#2784#0" expanded="false" />
-                <element signature="e#2921#2933#0" expanded="false" />
-                <element signature="e#2956#3275#0" expanded="false" />
-                <element signature="e#5769#6193#0" expanded="false" />
-                <element signature="e#6238#6947#0" expanded="false" />
-                <element signature="e#12777#13110#0" expanded="false" />
-                <element signature="e#13138#13522#0" expanded="false" />
-                <element signature="e#13546#13576#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tkinter_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/tkinter_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="101" column="56" lean-forward="true" selection-start-line="101" selection-start-column="56" selection-end-line="101" selection-end-column="56" />
-              <folding>
-                <element signature="e#283#1069#1" expanded="false" />
-              </folding>
+            <state relative-caret-position="310">
+              <caret line="43" column="23" lean-forward="false" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,8 +66,8 @@
       <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="99" column="65" lean-forward="false" selection-start-line="99" selection-start-column="58" selection-end-line="99" selection-end-column="65" />
+            <state relative-caret-position="1858">
+              <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
                 <element signature="e#799#1589#0" expanded="false" />
@@ -90,21 +80,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tkinter_ex.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/tkinter_ex.py">
+      <file leaf-file-name="_pydev_execfile.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="370">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tkinter2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/tkinter2.py">
+      <file leaf-file-name="XMLBook.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/XMLBook.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+            <state relative-caret-position="166">
+              <caret line="53" column="37" lean-forward="true" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pydevd.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="1577" column="0" lean-forward="false" selection-start-line="1577" selection-start-column="0" selection-end-line="1577" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -113,8 +113,8 @@
       <file leaf-file-name="MultiLineListBox.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MultiLineListBox.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+            <state relative-caret-position="220">
+              <caret line="152" column="28" lean-forward="true" selection-start-line="152" selection-start-column="28" selection-end-line="152" selection-end-column="28" />
               <folding>
                 <element signature="e#564#813#1" expanded="false" />
                 <element signature="e#901#2877#1" expanded="false" />
@@ -123,30 +123,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tkinter_test1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/Tkinter_test1.py">
+      <file leaf-file-name="Mail.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Mail.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-              <folding />
+            <state relative-caret-position="1464">
+              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+              <folding>
+                <element signature="e#1269#1285#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="빅뱅.gif" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/빅뱅.gif">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Mail.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mail.py">
+      <file leaf-file-name="pillow_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/pillow_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+            <state relative-caret-position="120">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
-                <element signature="e#1269#1285#0" expanded="true" />
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -184,6 +179,9 @@
       <find>getData</find>
       <find>'\m</find>
       <find>tp</find>
+      <find>getbookdata</find>
+      <find>getB</find>
+      <find>label</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -207,9 +205,7 @@
         <option value="$PROJECT_DIR$/InternetBook.py" />
         <option value="$PROJECT_DIR$/test/pooltest.py" />
         <option value="$PROJECT_DIR$/test/tkinter2.py" />
-        <option value="$PROJECT_DIR$/XMLBook.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/DaumAPIServer.py" />
         <option value="$PROJECT_DIR$/mail.py" />
         <option value="C:/Python36/Lib/ntpath.py" />
         <option value="$USER_HOME$/Desktop/강의자료/스크립트/tkinter_ex.py" />
@@ -219,13 +215,16 @@
         <option value="$PROJECT_DIR$/test/tkinter_test.py" />
         <option value="$PROJECT_DIR$/test/tkinter_list_test.py" />
         <option value="$PROJECT_DIR$/test/Tkinter_test1.py" />
+        <option value="$PROJECT_DIR$/DaumAPIServer.py" />
+        <option value="$PROJECT_DIR$/XMLBook.py" />
+        <option value="$PROJECT_DIR$/test/pillow_test.py" />
         <option value="$PROJECT_DIR$/MultiLineListBox.py" />
         <option value="$PROJECT_DIR$/Interface.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="56" />
+    <option name="x" value="-68" />
     <option name="width" value="1579" />
     <option name="height" value="1088" />
   </component>
@@ -245,8 +244,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -299,24 +298,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.Main">
-    <configuration default="false" name="tkinter_list_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="script_term" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/tkinter_list_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -335,39 +316,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in Tkinter_test1.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="script_term" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/Tkinter_test1.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method />
-    </configuration>
-    <configuration default="false" name="tkinter_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="script_term" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/tkinter_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="Tkinter_test1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -381,6 +329,60 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="script_term" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/Tkinter_test1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="pillow_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="script_term" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/pillow_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DaumAPIServer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="script_term" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DaumAPIServer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Interface" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="script_term" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Interface.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -451,19 +453,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.tkinter_list_test" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Main" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in Tkinter_test1.py" />
-      <item index="3" class="java.lang.String" itemvalue="Python.tkinter_test" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Tkinter_test1" />
+      <item index="0" class="java.lang.String" itemvalue="Python.Main" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Tkinter_test1" />
+      <item index="2" class="java.lang.String" itemvalue="Python.pillow_test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.DaumAPIServer" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Interface" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.Main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Tkinter_test1" />
-        <item index="2" class="java.lang.String" itemvalue="Python.tkinter_test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.tkinter_list_test" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in Tkinter_test1.py" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Interface" />
+        <item index="2" class="java.lang.String" itemvalue="Python.pillow_test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.DaumAPIServer" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Tkinter_test1" />
       </list>
     </recent_temporary>
   </component>
@@ -513,18 +515,19 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="56" y="0" width="1579" height="1088" extended-state="0" />
+    <frame x="-68" y="0" width="1579" height="1088" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16271621" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32492113" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32154006" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32154006" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32492113" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4090431" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4090431" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -561,6 +564,16 @@
           <line>51</line>
           <option name="timeStamp" value="147" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DaumAPIServer.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="156" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/XMLBook.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -569,25 +582,15 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="155" />
+      <option name="time" value="165" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="book" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python36/Lib/xml/dom/minidom.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="1957" column="0" lean-forward="false" selection-start-line="1957" selection-start-column="0" selection-end-line="1957" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python36/Lib/xml/dom/expatbuilder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21792">
-          <caret line="912" column="0" lean-forward="false" selection-start-line="912" selection-start-column="0" selection-end-line="912" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/multiprocessing_test3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -683,13 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
           <caret line="353" column="0" lean-forward="false" selection-start-line="353" selection-start-column="0" selection-end-line="353" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -832,22 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/XMLBook.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="109" column="10" lean-forward="false" selection-start-line="109" selection-start-column="10" selection-end-line="109" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DaumAPIServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpenAPIServer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -859,14 +839,6 @@
             <element signature="e#3757#4435#1" expanded="false" />
             <element signature="e#5304#6127#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python36/Lib/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="2792" column="8" lean-forward="false" selection-start-line="2792" selection-start-column="8" selection-end-line="2792" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -883,32 +855,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="99" column="65" lean-forward="false" selection-start-line="99" selection-start-column="58" selection-end-line="99" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-            <element signature="e#799#1589#0" expanded="false" />
-            <element signature="e#3312#4095#1" expanded="false" />
-            <element signature="e#4097#4437#1" expanded="false" />
-            <element signature="e#4438#4887#1" expanded="false" />
-            <element signature="e#4888#5064#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/tkinter_ex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/tkinter_list_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
+        <state relative-caret-position="1632">
           <caret line="68" column="18" lean-forward="false" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
           <folding />
         </state>
@@ -916,8 +873,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/tkinter_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="101" column="56" lean-forward="true" selection-start-line="101" selection-start-column="56" selection-end-line="101" selection-end-column="56" />
+        <state relative-caret-position="2016">
+          <caret line="101" column="56" lean-forward="false" selection-start-line="101" selection-start-column="56" selection-end-line="101" selection-end-column="56" />
           <folding>
             <element signature="e#283#1069#1" expanded="false" />
           </folding>
@@ -934,7 +891,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
+        <state relative-caret-position="1464">
           <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
             <element signature="e#1269#1285#0" expanded="true" />
@@ -942,10 +899,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="1577" column="0" lean-forward="false" selection-start-line="1577" selection-start-column="0" selection-end-line="1577" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XMLBook.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="53" column="37" lean-forward="true" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python36/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="2136" column="0" lean-forward="false" selection-start-line="2136" selection-start-column="0" selection-end-line="2136" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1858">
+          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#799#1589#0" expanded="false" />
+            <element signature="e#3312#4095#1" expanded="false" />
+            <element signature="e#4097#4437#1" expanded="false" />
+            <element signature="e#4438#4887#1" expanded="false" />
+            <element signature="e#4888#5064#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DaumAPIServer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="43" column="23" lean-forward="false" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/pillow_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MultiLineListBox.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+        <state relative-caret-position="220">
+          <caret line="152" column="28" lean-forward="true" selection-start-line="152" selection-start-column="28" selection-end-line="152" selection-end-column="28" />
           <folding>
             <element signature="e#564#813#1" expanded="false" />
             <element signature="e#901#2877#1" expanded="false" />
@@ -955,29 +977,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Interface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="281" column="45" lean-forward="false" selection-start-line="281" selection-start-column="45" selection-end-line="281" selection-end-column="45" />
+        <state relative-caret-position="-1606">
+          <caret line="367" column="23" lean-forward="true" selection-start-line="367" selection-start-column="23" selection-end-line="367" selection-end-column="23" />
           <folding>
             <element signature="e#13#23#0" expanded="true" />
-            <element signature="e#326#536#0" expanded="false" />
-            <element signature="e#572#709#0" expanded="false" />
-            <element signature="e#744#853#0" expanded="false" />
-            <element signature="e#891#1130#0" expanded="false" />
-            <element signature="e#1165#1187#0" expanded="false" />
-            <element signature="e#1225#1252#0" expanded="false" />
-            <element signature="e#1291#1642#0" expanded="false" />
-            <element signature="e#1681#1806#0" expanded="false" />
-            <element signature="e#1850#2176#0" expanded="false" />
-            <element signature="e#2362#2578#0" expanded="false" />
-            <element signature="e#2617#2670#0" expanded="false" />
-            <element signature="e#2714#2784#0" expanded="false" />
-            <element signature="e#2921#2933#0" expanded="false" />
-            <element signature="e#2956#3275#0" expanded="false" />
-            <element signature="e#5769#6193#0" expanded="false" />
-            <element signature="e#6238#6947#0" expanded="false" />
-            <element signature="e#12777#13110#0" expanded="false" />
-            <element signature="e#13138#13522#0" expanded="false" />
-            <element signature="e#13546#13576#0" expanded="false" />
+            <element signature="e#1046#1285#0" expanded="false" />
+            <element signature="e#1320#1342#0" expanded="false" />
+            <element signature="e#1380#1407#0" expanded="false" />
+            <element signature="e#1836#1961#0" expanded="false" />
+            <element signature="e#2005#2331#0" expanded="false" />
+            <element signature="e#3013#3083#0" expanded="false" />
+            <element signature="e#3349#3361#0" expanded="false" />
+            <element signature="e#3384#3703#0" expanded="false" />
+            <element signature="e#6197#6621#0" expanded="false" />
+            <element signature="e#6666#7375#0" expanded="false" />
+            <element signature="e#8275#8924#1" expanded="false" />
+            <element signature="e#14936#15269#0" expanded="false" />
+            <element signature="e#15297#15681#0" expanded="false" />
+            <element signature="e#15705#15735#0" expanded="false" />
           </folding>
         </state>
       </provider>

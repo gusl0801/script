@@ -73,4 +73,4 @@ def checkConnection():
 
 if __name__ == '__main__':
     isbn = '0596513984'
-    getBookData(isbn)
+    getBookData('isbn',isbn)

@@ -61,9 +61,6 @@ class XMLBook:
                             resultNodes.append(elem)
                             #(query, "=", node.firstChild.data)
                             break
-
-        elif self.api == 'data':
-            pass
         
         return resultNodes
 

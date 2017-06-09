@@ -149,7 +149,8 @@ logs the sets, and stores them in the item_roster and string_register attributes
 
         self.lb.selection_set(lines_st, lines_ed)  # select all relevant lines
         self.lastselection = lines_st  # remember what you selected last.
-
+        print("line st : {0}, list ed : {1}".format(lines_st,lines_ed))
+        self.label.PresentImage(lines_st)
         #data = self.lb.get(lines_st, lines_ed)
         #retText = ""
         #for i in range(len(data)):
@@ -202,6 +203,8 @@ logs the sets, and stores them in the item_roster and string_register attributes
 
         print(retText)
         return retText
+    def connect_label(self, label):
+        self.label = label
 
     def _get_lb(self):
         return self.lb
