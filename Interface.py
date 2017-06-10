@@ -8,6 +8,7 @@ from Main import LibSearchButtonHandler
 from Mail import *
 
 from MultiLineListBox import MutliLine_Single
+from Mail import MailSender
 
 from io import BytesIO
 import urllib.request
@@ -60,12 +61,16 @@ class InterfaceManager:
     def CreateButtons(self):
         self.buttons.append(InterfaceButton(self.window, (151,70), '      검색      '))
         self.buttons.append(InterfaceButton(self.window, (247,70), ' 도서관 찾기 '))
-        self.buttons.append(InterfaceButton(self.window, (20, 70), ' 메일 전송 '))
+        self.buttons.append(InterfaceButton(self.window, (350, 70), ' 메일 전송 '))
 
         for button in self.buttons:
             button.Create()
 
-        self.buttons[2].setHandlerFunc(SendMail)
+        sender  = "scoke0801@gmail.com"
+        reciver = "scoke0801@daum.net"
+        passwd = "dla753156"
+        mail_sender = MailSender(sender, reciver, passwd)
+        self.buttons[2].setHandlerFunc(mail_sender, mail_sender.Send)
 
     def CreateEntries(self):
         self.entries.append(InterfaceEntry(self.window, (150,40), ""))
@@ -148,7 +153,8 @@ class InterfaceButton(Interface):
         self.id = InterfaceButton.ID
         InterfaceButton.ID += 1
 
-    def setHandlerFunc(self,func):
+    def setHandlerFunc(self, instance, func):
+        self.instance = instance
         self.interface.config(command = func)
 
     def handlerFunc(self):

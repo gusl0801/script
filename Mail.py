@@ -88,6 +88,7 @@ msg['Subject'] = "Test email in Python 3.6"
 msg['From'] = senderAddr
 msg['To'] = recipientAddr
 
+
 # MIME 문서를 생성합니다.
 #htmlFD = open('htmlFileName', 'rb')
 #HtmlPart = MIMEText(htmlFD.read(),'html', _charset = 'UTF-8' )
@@ -97,3 +98,37 @@ msg['To'] = recipientAddr
 #msg.attach(HtmlPart)
 
 # 메일을 발송한다.
+
+class MailSender:
+    host = "smtp.gmail.com"  # Gmail STMP 서버 주소.
+    port = "587"
+
+    def __init__(self, sendAddr, recipAddr, passwd):
+        self.senderAddr    = "scoke0801@gmail.com"     # 보내는 사람 email 주소.
+        self.recipientAddr = "scoke0801@daum.net"   # 받는 사람 email 주소.
+
+        #self.senderAddr =  sendAddr # 보내는 사람 email 주소.
+        #self.recipientAddr = recipAddr  # 받는 사람 email 주소.
+        self.OnCreate()
+
+    def OnCreate(self):
+        msg = MIMEBase("multipart", "alternative")
+        msg['Subject'] = "Test email in Python 3.6"
+        msg['From'] = senderAddr
+        msg['To'] = recipientAddr
+
+    def AddHTML(self, html):
+        HtmlPart = MIMEText(html.read(), 'html', _charset = 'UTF-8' )
+
+        #만들었던 mime을 MIMEBase에 첨부 시킨다.
+        msg.attach(HtmlPart)
+
+    def Send(self):
+        s = smtplib.SMTP(MailSender.host, MailSender.port)
+        # s.set_debuglevel(1)        # 디버깅이 필요할 경우 주석을 푼다.
+        s.ehlo()
+        s.starttls()
+        s.ehlo()
+        s.login("scoke0801@gmail.com", "dla753156")
+        s.sendmail(self.senderAddr, [self.recipientAddr], self.msg.as_string())
+        s.close()
