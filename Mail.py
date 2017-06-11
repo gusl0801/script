@@ -1,93 +1,7 @@
-"""
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-
-# global value
-host = "smtp.gmail.com"
-port = "587"
-password = ""
-SENDER_ADDR = "scoke0801@gmail.com"
-SENDER_PASSWD = ""
-senderAddr = "scoke0801@gmail.com"
-recipientAddr = None
-
-# Message container를 생성합니다.
-msg = MIMEMultipart('alternative')
-
-# set message
-msg["Title"] = "test message"
-msg["From"] = senderAddr
-msg["To"] = recipientAddr
-
-msgPart = MIMEText("전송 텍스트", "plain")                   # 수정 필요
-dataPart = MIMEText("전송 html", "html", _charset = "UTF-8") # 수정 필요
-
-# Attach MIME to created msg
-msg.attach(msgPart)
-msg.attach(dataPart)
-
-print("connect smtp server ... ")
-s = smtplib.SMTP(host, port)
-s.ehlo()
-s.starttls()
-s.ehlo()
-
-s.login(senderAddr, password)
-s.sendmail(senderAddr, [recipientAddr], msg.as_string())
-s.close()
-
-print("mail sending complete!")
-
-class MailHandler:
-    HOST = "smtp.gmail.com"
-    PORT = "587"
-
-    def __init__(self, recipientAddr = "scoke0801@daum.net"):
-        # Message container를 생성합니다.
-        self.msg = MIMEMultipart('alternative')
-
-        self.senderAddr = SENDER_ADDR
-        self.passwd = SENDER_PASSWD
-
-        self.recipientAddr = recipientAddr
-
-    def Send(self):
-        pass
-    
-"""
-
-# -*- coding: cp949 -*-
 import mimetypes
 import smtplib
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
-
-def SendMail():
-    s = smtplib.SMTP(host, port)
-    # s.set_debuglevel(1)        # 디버깅이 필요할 경우 주석을 푼다.
-    s.ehlo()
-    s.starttls()
-    s.ehlo()
-    s.login("scoke0801@gmail.com", "dla753156")
-    s.sendmail(senderAddr, [recipientAddr], msg.as_string())
-    s.close()
-
-    print("1234")
-
-#global value
-host = "smtp.gmail.com" # Gmail STMP 서버 주소.
-port = "587"
-# htmlFileName = "logo.html"
-
-senderAddr = "scoke0801@gmail.com"     # 보내는 사람 email 주소.
-recipientAddr = "scoke0801@daum.net"   # 받는 사람 email 주소.
-
-msg = MIMEBase("multipart", "alternative")
-msg['Subject'] = "Test email in Python 3.6"
-msg['From'] = senderAddr
-msg['To'] = recipientAddr
-
 
 # MIME 문서를 생성합니다.
 #htmlFD = open('htmlFileName', 'rb')
@@ -103,27 +17,76 @@ class MailSender:
     host = "smtp.gmail.com"  # Gmail STMP 서버 주소.
     port = "587"
 
-    def __init__(self, sendAddr, recipAddr, passwd):
+    def __init__(self, sendAddr, recipAddr, passwd, connection):
         self.senderAddr    = "scoke0801@gmail.com"     # 보내는 사람 email 주소.
         self.recipientAddr = "scoke0801@daum.net"   # 받는 사람 email 주소.
-
+        self.connection = connection
         #self.senderAddr =  sendAddr # 보내는 사람 email 주소.
         #self.recipientAddr = recipAddr  # 받는 사람 email 주소.
-        self.OnCreate()
 
     def OnCreate(self):
-        msg = MIMEBase("multipart", "alternative")
-        msg['Subject'] = "Test email in Python 3.6"
-        msg['From'] = senderAddr
-        msg['To'] = recipientAddr
+        self.msg = MIMEBase("multipart", "alternative")
+        self.msg['Subject'] = "Test email in Python 3.6"
+        self.msg['From'] = self.senderAddr
+        self.msg['To'] = self.recipientAddr
 
-    def AddHTML(self, html):
-        HtmlPart = MIMEText(html.read(), 'html', _charset = 'UTF-8' )
+    def OnDestroy(self):
+        del self.msg
 
-        #만들었던 mime을 MIMEBase에 첨부 시킨다.
-        msg.attach(HtmlPart)
+    def AddHTML(self, htmlText):
+        self.HtmlPart = MIMEText(htmlText, 'html', _charset='UTF-8')
 
+    def ConnectHTML(self):
+        self.msg.attach(self.HtmlPart)
+
+    def MakeHtmlDoc(self):
+        from xml.dom.minidom import getDOMImplementation
+        # get Dom Implementation
+        impl = getDOMImplementation()
+
+        newdoc = impl.createDocument(None, "html", None)  # DOM 객체 생성
+        top_element = newdoc.documentElement
+        header = newdoc.createElement('header')
+        top_element.appendChild(header)
+
+        # Body 엘리먼트 생성.
+        body = newdoc.createElement('body')
+
+        l = ["1234", "the book"]
+        for bookitem in l:  # l - > booklist
+            # create bold element
+            b = newdoc.createElement('b')
+            # create text node
+            ibsnText = newdoc.createTextNode("ISBN:" + bookitem[0])
+            b.appendChild(ibsnText)
+
+            body.appendChild(b)
+
+            # BR 태그 (엘리먼트) 생성.
+            br = newdoc.createElement('br')
+
+            body.appendChild(br)
+
+            # create title Element
+            p = newdoc.createElement('p')
+            # create text node
+            titleText = newdoc.createTextNode("Title:" + bookitem[1])
+            p.appendChild(titleText)
+
+            body.appendChild(p)
+            body.appendChild(br)  # line end
+
+        # append Body
+        top_element.appendChild(body)
+
+        return newdoc.toxml()
     def Send(self):
+        self.OnCreate()
+
+        print(self.connection.getData())
+"""
+        self.ConnectHTML()
+
         s = smtplib.SMTP(MailSender.host, MailSender.port)
         # s.set_debuglevel(1)        # 디버깅이 필요할 경우 주석을 푼다.
         s.ehlo()
@@ -132,3 +95,6 @@ class MailSender:
         s.login("scoke0801@gmail.com", "dla753156")
         s.sendmail(self.senderAddr, [self.recipientAddr], self.msg.as_string())
         s.close()
+
+        self.OnDestroy()
+"""

@@ -66,12 +66,6 @@ class InterfaceManager:
         for button in self.buttons:
             button.Create()
 
-        sender  = "scoke0801@gmail.com"
-        reciver = "scoke0801@daum.net"
-        passwd = "dla753156"
-        mail_sender = MailSender(sender, reciver, passwd)
-        self.buttons[2].setHandlerFunc(mail_sender, mail_sender.Send)
-
     def CreateEntries(self):
         self.entries.append(InterfaceEntry(self.window, (150,40), ""))
 
@@ -102,6 +96,12 @@ class InterfaceManager:
             button.setConnection2Entry(self.entries[0])
             button.setConnections(self.radioButtons)
             button.setConnection2List(self.List[0])
+
+        sender = "scoke0801@gmail.com"
+        reciver = "scoke0801@daum.net"
+        passwd = "dla753156"
+        mail_sender = MailSender(sender, reciver, passwd, self.List[0])
+        self.buttons[2].setHandlerFunc(mail_sender, mail_sender.Send)
 
     def RegistEntries(self):
         for entry in self.entries:
@@ -170,13 +170,9 @@ class InterfaceButton(Interface):
                     result = DaumAPIServer.getBookData(query='isbn', keyword=self.connEntry.getData())
             if len(result) != 0:
                 self.connList.clear()
-                print(len(result))
                 self.connList.AddBookElements(result)
 
         elif self.id == 1:
-            print(type(self.connList))
-            print(self.connList.getData())
-            print(type(self.connList.getData()))
             data = self.connList.getData()
             index = data.find("title")
             if index != -1:
@@ -185,7 +181,7 @@ class InterfaceButton(Interface):
                 d = data[index + 8: -4]
 
                 data = LibSearchButtonHandler(data[index + 8: -4])
-                print(type(data))
+
                 if data != None:
                     self.connList.AddLibDataDom(data)
 
@@ -358,8 +354,6 @@ class InterfaceList(Interface):
 
         if len(url_list) != 0:
             self.connected_label.setUrls(url_list)
-            for c in url_list:
-                print(c)
 
     def AddLibDataDom(self, domList):
         foundNum = 0
@@ -421,7 +415,7 @@ class InterfaceLabel(Interface):
         pass
 
     def Create(self):
-        self.frame = Frame(self.parent, bd=2, relief=RAISED, width= 100, height= 100, background = 'blue')
+        self.frame = Frame(self.parent, bd=2, relief=RAISED, width= 100, height= 100,)
         #self.label = Label(self.frame, height=100, width=100)
 
         pass
@@ -437,10 +431,10 @@ class InterfaceLabel(Interface):
 
     def PresentImage(self, raw_index):
         index = self.FindIndex(raw_index)
-        print(index)
+
         if index is None:
             return
-        print("url : {0}, index : {1}".format(self.url_list[index][0],index))
+
         url = self.url_list[index][0]
         with urllib.request.urlopen(url) as u:
             raw_data = u.read()
