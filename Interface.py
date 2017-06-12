@@ -325,17 +325,17 @@ class InterfaceList(Interface):
             for child in elem.childNodes:
                 if child.nodeName == 'author' :
                     if child.firstChild != None:
-                        text += 'author : ' + str(child.firstChild.data) + '  \n'
+                        text += 'author : ' + str(child.firstChild.data) + '\n'
                         line_count += 1
                         last_line += 1
                 elif child.nodeName == 'isbn':
                     if child.firstChild != None:
-                        text += 'isbn : ' + str(child.firstChild.data)+ '   \n'
+                        text += 'isbn : ' + str(child.firstChild.data)+ '\n'
                         line_count += 1
                         last_line += 1
                 elif child.nodeName == 'title':
                     if child.firstChild != None:
-                        text += 'title : ' + str(child.firstChild.data)+ '   \n'
+                        text += 'title : ' + str(child.firstChild.data)+ '\n'
                         line_count += 1
                         last_line += 1
                 elif child.nodeName == 'cover_l_url':
@@ -405,6 +405,8 @@ class InterfaceList(Interface):
         #if len(sel) == 1:
         #    data = self.listBox.get(1)
         #    return data
+    def getListData(self):
+        return self.lb._get_selected_items_list()
 
 class InterfaceLabel(Interface):
     def __init__(self, parent, pos):
@@ -446,7 +448,7 @@ class InterfaceLabel(Interface):
 
         image_file = image_file.resize((100, 100), Image.ANTIALIAS)
         image = ImageTk.PhotoImage(image_file)
-        self.label = Label(self.frame, image = image, height=100, width=100)
+        self.label = Label(self.frame, image = image, height=105, width=105)
         self.label.image = image
         self.label.pack()
         self.label.place(x=0,y=0)

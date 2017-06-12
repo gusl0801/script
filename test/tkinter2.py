@@ -1,18 +1,11 @@
 from tkinter import *
 
-a=['사과','딸기','포도','수박']
+r= Tk()
 
-def sel():
-    select="당신이 선택한 과일은 ?"+a[var.get()]
-    label.config(text=select)
-r=Tk()
-var=IntVar()
+f = Frame(r, bd=2, relief=RAISED, width= 100, height= 100)
+label=Label(f, text = "IMAGE")
 
-for i in range(0,4):
-    Radiobutton(r,text=str(i)+'.'+a[i],
-                value=i,
-                variable=var,
-                command=sel).pack(anchor='c')
-label=Label(r)
+f.pack()
 label.pack()
+
 r.mainloop()

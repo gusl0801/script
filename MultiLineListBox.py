@@ -203,6 +203,20 @@ logs the sets, and stores them in the item_roster and string_register attributes
 
         print(retText)
         return retText
+
+    def _get_selected_items_list(self):
+        selection = self.lb.curselection()  # Get the new selection data.
+
+        lines_st, lines_ed = self.index_sets[selection[0]]
+        # ^ Get the string block associated with the current selection.
+
+        data = self.lb.get(lines_st, lines_ed)
+
+        retList = []
+
+        for i in range(len(data)):
+            retList.append(data[i])
+        return retList
     def connect_label(self, label):
         self.label = label
 

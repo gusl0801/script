@@ -12,6 +12,24 @@ from email.mime.text import MIMEText
 #msg.attach(HtmlPart)
 
 # 메일을 발송한다.
+xmlText = '<?xml version="1.0" ?>\
+            <booklist cnt="3">\
+            <book ISBN="0399250395">\
+            <title>The Very Hungry Caterpillar Pop-Up Book</title>\
+            <author name="Eric Carle"/>\
+            <author name="Keith Finch"/>\
+            <publisher> Philomel Books</publisher>\
+            <description> Celebrating the 40th anniverary of one of the most popular children s books ever created</description>\
+            </book>\
+            <book ISBN="0964729237">\
+            <title lang="english">The Shack</title>\
+            </book>\
+            <book ISBN="0553281097">\
+            <title>You Can Negotiate Anything</title>\
+            <author name="Herb Cohen"/>\
+            <category cid="12">Negotiate and narrative skill</category>\
+            </book>\
+            </booklist>'
 
 class MailSender:
     host = "smtp.gmail.com"  # Gmail STMP 서버 주소.
@@ -36,10 +54,16 @@ class MailSender:
     def AddHTML(self, htmlText):
         self.HtmlPart = MIMEText(htmlText, 'html', _charset='UTF-8')
 
+    def AddXML(self, xmlText):
+        self.XMLPart =  MIMEText(xmlText, 'xml', _charset = "UTF-8")
+
     def ConnectHTML(self):
         self.msg.attach(self.HtmlPart)
 
-    def MakeHtmlDoc(self):
+    def ConnectXML(self):
+        self.msg.attach(self.XMLPart)
+
+    def MakeHtmlDoc(self, bookList):
         from xml.dom.minidom import getDOMImplementation
         # get Dom Implementation
         impl = getDOMImplementation()
@@ -51,40 +75,57 @@ class MailSender:
 
         # Body 엘리먼트 생성.
         body = newdoc.createElement('body')
+# ---------------------------------------------
+        # create bold element
+        b = newdoc.createElement('b')
+        # create text node
+        for text in bookList:
+            if text.find("title") != -1:
+                #"isbn" + " : "
+                print("in title : ", text)
+                titleText = newdoc.createTextNode("TITLE:" + text[8:])
+                b.appendChild(titleText)
+                body.appendChild(b)
+                break
 
-        l = ["1234", "the book"]
-        for bookitem in l:  # l - > booklist
-            # create bold element
-            b = newdoc.createElement('b')
-            # create text node
-            ibsnText = newdoc.createTextNode("ISBN:" + bookitem[0])
-            b.appendChild(ibsnText)
+        # BR 태그 (엘리먼트) 생성.
+        br = newdoc.createElement('br')
 
-            body.appendChild(b)
+        body.appendChild(br)
 
-            # BR 태그 (엘리먼트) 생성.
-            br = newdoc.createElement('br')
+        # create title Element
+        p = newdoc.createElement('p')
+        # create text node
+        for text in bookList:
+            if text.find("isbn") != -1:
+                print("in isbn : ", text)
+                isbnText = newdoc.createTextNode("ISBN:" + text[7:])
+                p.appendChild(isbnText)
+                body.appendChild(p)
+                break
 
-            body.appendChild(br)
+        s = newdoc.createElement('s')
 
-            # create title Element
-            p = newdoc.createElement('p')
-            # create text node
-            titleText = newdoc.createTextNode("Title:" + bookitem[1])
-            p.appendChild(titleText)
+        for text in bookList:
+            if text.find('author') != -1:
+                print("in author : ", text)
+                authorText = newdoc.createTextNode("Author:" + text[9:])
+                s.appendChild(authorText)
+                body.appendChild(s)
+                break
 
-            body.appendChild(p)
-            body.appendChild(br)  # line end
-
+        body.appendChild(br)  # line end
+#---------------------------------------------
         # append Body
         top_element.appendChild(body)
 
         return newdoc.toxml()
+
     def Send(self):
         self.OnCreate()
 
-        print(self.connection.getData())
-"""
+        html = self.MakeHtmlDoc(self.connection.getListData())
+        self.AddHTML(html)
         self.ConnectHTML()
 
         s = smtplib.SMTP(MailSender.host, MailSender.port)
@@ -97,4 +138,7 @@ class MailSender:
         s.close()
 
         self.OnDestroy()
-"""
+
+if __name__ == '__main__':
+    result = MIMEText(xmlText, 'xml', _charset="UTF-8")
+    print(result)
