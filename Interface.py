@@ -368,11 +368,11 @@ class InterfaceList(Interface):
                                 text = str()
                                 for data in itemNode.childNodes:
                                     if data.nodeName == 'author':
-                                        text += 'author : ' + str(data.firstChild.data) + '  \n'
+                                        text += 'author : ' + str(data.firstChild.data) + '\n'
                                     elif data.nodeName == 'libName':
-                                        text += 'libName : ' + str(data.firstChild.data) + '   \n'
+                                        text += 'libName : ' + str(data.firstChild.data) + '\n'
                                     elif data.nodeName == 'title':
-                                        text += 'title : ' + str(data.firstChild.data) + '   \n'
+                                        text += 'title : ' + str(data.firstChild.data) + '\n'
                                     if foundNum == 0:
                                         self.clear()
                                     foundNum += 1

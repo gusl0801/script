@@ -104,14 +104,23 @@ class MailSender:
                 body.appendChild(p)
                 break
 
-        s = newdoc.createElement('s')
+        p = newdoc.createElement('p')
 
         for text in bookList:
             if text.find('author') != -1:
                 print("in author : ", text)
                 authorText = newdoc.createTextNode("Author:" + text[9:])
-                s.appendChild(authorText)
-                body.appendChild(s)
+                p.appendChild(authorText)
+                body.appendChild(p)
+                break
+
+
+        for text in bookList:
+            if text.find('libName') != -1:
+                print("in libName : ", text)
+                authorText = newdoc.createTextNode("LibName:" + text[10:])
+                p.appendChild(authorText)
+                body.appendChild(p)
                 break
 
         body.appendChild(br)  # line end
