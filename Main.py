@@ -94,7 +94,6 @@ def getBookDataPool(searchTag):
     pool.close()
     pool.join()
     return result
-    """ """
 
 if __name__ == '__main__':
     interface = InterfaceManager(title ="소장도서 검색기", pos ='480x640+300+100')
