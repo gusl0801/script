@@ -36,12 +36,28 @@ class InterfaceManager:
         self.CreateList()
         self.CreateLabel()
 
+
     def AllRegist(self):
         self.RegistButtons()
         self.RegistEntries()
         self.RegistRadioButtons()
         self.RegistList()
         self.RegistLabel()
+
+
+        label = Label(self.window, text = "메일 주소 입력 ", bg = 'gray')
+        label.place(x = 18, y = 122)
+
+        entry = Entry(self.window, width = 25, bd = 3)
+        entry.place(x = 148, y = 120 )
+
+
+        lb = Listbox(self.window, activestyle='none',
+                                width=12, height=3, borderwidth=7, relief= RAISED,)#yscrollcommand=ListBoxScrollbar.set)
+        lb.place(x = 350, y = 37)
+
+        label_ = Label(self.window, text="도서관 목록 ", bg = 'gray' )
+        label_.place(x=363, y=7)
 
     def CreateWindow(self):
         global radioButtonVar
@@ -61,7 +77,7 @@ class InterfaceManager:
     def CreateButtons(self):
         self.buttons.append(InterfaceButton(self.window, (151,70), '      검색      '))
         self.buttons.append(InterfaceButton(self.window, (247,70), ' 도서관 찾기 '))
-        self.buttons.append(InterfaceButton(self.window, (350, 70), ' 메일 전송 '))
+        self.buttons.append(InterfaceButton(self.window, (350, 120), '     메일 전송     '))
 
         for button in self.buttons:
             button.Create()
@@ -80,12 +96,12 @@ class InterfaceManager:
             radioButton.Create()
 
     def CreateList(self):
-        self.List.append(InterfaceList(self.window, (10, 105), ""))
+        self.List.append(InterfaceList(self.window, (10, 155), ""))
 
         for l in self.List:
             l.Create()
     def CreateLabel(self):
-        self.label.append(InterfaceLabel(self.window, (10,10)))
+        self.label.append(InterfaceLabel(self.window, (10,5)))
 
         for l in self.label:
             l.Create()
@@ -268,14 +284,14 @@ class InterfaceList(Interface):
 
     def Create(self):
         #480x640
-        self.frame = Frame(self.parent, bd=2, relief=RAISED, width=450, height= 500)
+        self.frame = Frame(self.parent, bd=2, relief=RAISED, width=450, height= 400)
 
         self.scrollbar_ver = Scrollbar(self.frame, orient = 'vertical')
         self.scrollbar_hor = Scrollbar(self.frame, orient = 'horizontal')
 
         self.lb = MutliLine_Single(self.frame, "", yscrollcommand= self.scrollbar_ver.set,
                                   xscrollcommand=self.scrollbar_hor.set,
-                                  width = 60, height = '30', borderwidth = 3, relief = 'groove')
+                                  width = 60, height = '27', borderwidth = 3, relief = 'groove')
 
         self.scrollbar_ver.config(command = self.lb._get_lb().yview)
         self.scrollbar_hor.config(command = self.lb._get_lb().xview)
@@ -417,9 +433,9 @@ class InterfaceLabel(Interface):
         pass
 
     def Create(self):
-        self.frame = Frame(self.parent, bd=2, relief=RAISED, width= 100, height= 100,)
-        #self.label = Label(self.frame, height=100, width=100)
+        self.frame = Frame(self.parent, bd = 1, relief=RAISED, width= 100, height= 100, bg = 'gray')
 
+        #self.label = Label(self.frame, height=100, width=100)
         pass
 
     def Regist(self):
