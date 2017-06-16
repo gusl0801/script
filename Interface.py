@@ -15,6 +15,9 @@ import urllib.request
 from PIL import Image, ImageTk
 
 radioButtonVar = None
+
+#쓰레기 코드, 참고하지 말자
+
 class InterfaceManager:
     def __init__(self, title, pos, color = 'gray'):
         self.window = None
@@ -28,6 +31,41 @@ class InterfaceManager:
         self.List = []
         self.label = []
 
+#############################################################
+#...........................................................#
+############################################################
+        self.mail_label = None
+        self.mail_entry = None
+        self.scrollbar = None
+        self.lib_lb = None
+        self.lib_label = None
+
+    def CreateRests(self):
+        from OpenAPIServer import libList
+        self.mail_label = Label(self.window, text="메일 주소 입력 ", bg='gray')
+        self.mail_label.place(x=18, y=122)
+
+        self.mail_entry = Entry(self.window, width=25, bd=3)
+        self.mail_entry.place(x=148, y=120)
+
+        self.scrollbar = Scrollbar(self.window, )
+        self.scrollbar.pack(side=RIGHT, fill=Y)
+        self.scrollbar.place(x=455, y=35)
+
+        self.lib_lb = Listbox(self.window, activestyle='none', yscrollcommand= self.scrollbar.set,
+                     width=14, height=4, borderwidth=1, relief=RAISED, )  # yscrollcommand=ListBoxScrollbar.set)
+
+        self.scrollbar.config(command=self.lib_lb.yview)
+
+        for v in libList.values():
+            self.lib_lb.insert(END, v)
+
+        self.lib_lb.pack()
+        self.lib_lb.place(x=350, y=35)
+
+        self.lib_label = Label(self.window, text="도서관 목록 ", bg='gray')
+        self.lib_label.place(x=353, y=7)
+
     def AllCreates(self):
         self.CreateWindow()
         self.CreateButtons()
@@ -35,7 +73,7 @@ class InterfaceManager:
         self.CreateRadioButtons()
         self.CreateList()
         self.CreateLabel()
-
+        self.CreateRests()
 
     def AllRegist(self):
         self.RegistButtons()
@@ -45,19 +83,7 @@ class InterfaceManager:
         self.RegistLabel()
 
 
-        label = Label(self.window, text = "메일 주소 입력 ", bg = 'gray')
-        label.place(x = 18, y = 122)
 
-        entry = Entry(self.window, width = 25, bd = 3)
-        entry.place(x = 148, y = 120 )
-
-
-        lb = Listbox(self.window, activestyle='none',
-                                width=12, height=3, borderwidth=7, relief= RAISED,)#yscrollcommand=ListBoxScrollbar.set)
-        lb.place(x = 350, y = 37)
-
-        label_ = Label(self.window, text="도서관 목록 ", bg = 'gray' )
-        label_.place(x=363, y=7)
 
     def CreateWindow(self):
         global radioButtonVar
