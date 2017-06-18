@@ -61,6 +61,52 @@ libList = { 'MA' : "강남도서관",\
             'MS':"용산도서관",
             'MT':"정독도서관",
             'MU':"종로도서관"}
+
+libList = { 'MA' : "강남도서관",\
+            'MB' : "강동도서관",\
+            'MC' : "강서도서관",\
+            'MD' : "개포도서관",\
+            'ME' : "고덕평생학습관",\
+            'MF':"고척도서관",\
+            'MG':"구로도서관",
+            'MH':"남산도서관",
+            'MV':"노원평생학습관",
+            'MJ':"도봉도서관",
+            'MK':"동대문도서관",
+            'ML':"동작도서관",
+            'MX':"마포평생아현분관",
+            'MM':"마포평생학습관",
+            'MP':"서대문도서관",
+            'MW':"송파도서관",
+             'MN':"양천도서관",
+            'MQ':"어린이도서관",
+            'MR':"영등포평생학습관",
+            'MS':"용산도서관",
+            'MT':"정독도서관",
+            'MU':"종로도서관"}
+
+libListReverse ={  "강남도서관"	:'MA',\
+                   "강동도서관"	:'MB'	,\
+                   "강서도서관"	:'MC', \
+                   "개포도서관"	:'MD',\
+                   "고덕평생학습관":'ME',\
+                   "고척도서관"	    :'MF',\
+                   "구로도서관"		:'MG',\
+                   "남산도서관"	:'MH',\
+                   "노원평생학습관":'MV',\
+                   "도봉도서관"    :'MJ',\
+                   "동대문도서관"	 :'MK',\
+                   "동작도서관"	:'ML',\
+                   "마포평생아현분관":'MX',\
+                   "마포평생학습관":'MM',\
+                   "서대문도서관"   :'MP',\
+                   "송파도서관"	:'MW',\
+                   "양천도서관"		:'MN',\
+                   "어린이도서관"	   :'MQ',\
+                   "영등포평생학습관"	:'MR',\
+                   "용산도서관"		:'MS',\
+                   "정독도서관"		:'MT',\
+                   "종로도서관"		:'MU'}
 def URIBuilder(server, **user):
     str = "http://" + server + "/openapi/service/lib/openApi?"
 
@@ -124,6 +170,24 @@ def getBookDataFromTitle(title):
         testList[i].LoadFromText(req.content)
     return testList
     """
+
+def ProcessFuncSimple(title, lib_code):
+    global server, regKey, conn
+
+    #if conn == None:
+    #    connectOpenAPIServer()
+
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.0; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0'}
+    keyword = urllib.parse.quote(title)
+
+    uri = URIBuilder(server, serviceKey=keyList[0],
+                     title=keyword,
+                     manageCd= lib_code)
+
+    print (uri)
+    req = requests.get(uri, headers=headers)
+    print(req.content)
+    return req.content
 
 def ProcessFunc(start, end, result, keyword):
     global server, regKey, conn

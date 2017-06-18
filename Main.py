@@ -3,8 +3,17 @@ from Interface import*
 from multiprocessing import Pool
 from DaumAPIServer import *
 
-def LibSearchButtonHandler(title):
+def LibSearchSimpleHandler(title, lib_code):
+    content = ProcessFuncSimple(title, lib_code)
+    book = XMLBook(api='data')
+    book.LoadFromText(content)
+    book.PrintBookList()
 
+    retList = [book]
+    return retList
+
+
+def LibSearchButtonHandler(title):
     textList = getBookDataPool(title)
     #print("-----------------------get text queue data-----------------------")
     bookList = []

@@ -2,6 +2,7 @@ import mimetypes
 import smtplib
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
+import spam
 
 # MIME 문서를 생성합니다.
 #htmlFD = open('htmlFileName', 'rb')
@@ -35,10 +36,11 @@ class MailSender:
     host = "smtp.gmail.com"  # Gmail STMP 서버 주소.
     port = "587"
 
-    def __init__(self, sendAddr, recipAddr, passwd, connection):
+    def __init__(self, sendAddr, recipAddr, passwd, connection, entry):
         self.senderAddr    = "scoke0801@gmail.com"     # 보내는 사람 email 주소.
         self.recipientAddr = "scoke0801@daum.net"   # 받는 사람 email 주소.
         self.connection = connection
+        self.entry = entry
         #self.senderAddr =  sendAddr # 보내는 사람 email 주소.
         #self.recipientAddr = recipAddr  # 받는 사람 email 주소.
 
@@ -80,7 +82,7 @@ class MailSender:
         b = newdoc.createElement('b')
         # create text node
         for text in bookList:
-            if text.find("title") != -1:
+            if spam.findStr(text, "title") != 0:
                 #"isbn" + " : "
                 print("in title : ", text)
                 titleText = newdoc.createTextNode("TITLE:" + text[8:])
@@ -97,7 +99,7 @@ class MailSender:
         p = newdoc.createElement('p')
         # create text node
         for text in bookList:
-            if text.find("isbn") != -1:
+            if spam.findStr(text, "isbn") != 0:
                 print("in isbn : ", text)
                 isbnText = newdoc.createTextNode("ISBN:" + text[7:])
                 p.appendChild(isbnText)
@@ -107,7 +109,7 @@ class MailSender:
         p = newdoc.createElement('p')
 
         for text in bookList:
-            if text.find('author') != -1:
+            if spam.findStr(text, "author") != 0:
                 print("in author : ", text)
                 authorText = newdoc.createTextNode("Author:" + text[9:])
                 p.appendChild(authorText)
@@ -116,7 +118,7 @@ class MailSender:
 
 
         for text in bookList:
-            if text.find('libName') != -1:
+            if spam.findStr(text, "libName") != 0:
                 print("in libName : ", text)
                 authorText = newdoc.createTextNode("LibName:" + text[10:])
                 p.appendChild(authorText)
@@ -131,6 +133,9 @@ class MailSender:
         return newdoc.toxml()
 
     def Send(self):
+        self.recipientAddr = self.entry.get()
+        print(self.recipientAddr)
+
         self.OnCreate()
 
         html = self.MakeHtmlDoc(self.connection.getListData())
@@ -143,6 +148,9 @@ class MailSender:
         s.starttls()
         s.ehlo()
         s.login("scoke0801@gmail.com", "dla753156")
+
+
+
         s.sendmail(self.senderAddr, [self.recipientAddr], self.msg.as_string())
         s.close()
 

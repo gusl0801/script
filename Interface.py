@@ -4,7 +4,7 @@ import DaumAPIServer
 import OpenAPIServer
 from tkinter import *
 from tkinter import font
-from Main import LibSearchButtonHandler
+from Main import LibSearchButtonHandler, LibSearchSimpleHandler
 from Mail import *
 
 from MultiLineListBox import MutliLine_Single
@@ -14,12 +14,14 @@ from io import BytesIO
 import urllib.request
 from PIL import Image, ImageTk
 
+from OpenAPIServer import libListReverse
 radioButtonVar = None
-
+import spam
+spam
 #쓰레기 코드, 참고하지 말자
 
 class InterfaceManager:
-    def __init__(self, title, pos, color = 'gray'):
+    def __init__(self, title, pos, color = 'orange'):
         self.window = None
         self.title = title
         self.pos = pos
@@ -42,7 +44,7 @@ class InterfaceManager:
 
     def CreateRests(self):
         from OpenAPIServer import libList
-        self.mail_label = Label(self.window, text="메일 주소 입력 ", bg='gray')
+        self.mail_label = Label(self.window, text="메일 주소 입력 ", bg='orange')
         self.mail_label.place(x=18, y=122)
 
         self.mail_entry = Entry(self.window, width=25, bd=3)
@@ -54,7 +56,6 @@ class InterfaceManager:
 
         self.lib_lb = Listbox(self.window, activestyle='none', yscrollcommand= self.scrollbar.set,
                      width=14, height=4, borderwidth=1, relief=RAISED, )  # yscrollcommand=ListBoxScrollbar.set)
-
         self.scrollbar.config(command=self.lib_lb.yview)
 
         for v in libList.values():
@@ -63,17 +64,17 @@ class InterfaceManager:
         self.lib_lb.pack()
         self.lib_lb.place(x=350, y=35)
 
-        self.lib_label = Label(self.window, text="도서관 목록 ", bg='gray')
+        self.lib_label = Label(self.window, text="도서관 목록 ", bg='orange')
         self.lib_label.place(x=353, y=7)
 
     def AllCreates(self):
         self.CreateWindow()
+        self.CreateRests()
         self.CreateButtons()
         self.CreateEntries()
         self.CreateRadioButtons()
         self.CreateList()
         self.CreateLabel()
-        self.CreateRests()
 
     def AllRegist(self):
         self.RegistButtons()
@@ -81,9 +82,6 @@ class InterfaceManager:
         self.RegistRadioButtons()
         self.RegistList()
         self.RegistLabel()
-
-
-
 
     def CreateWindow(self):
         global radioButtonVar
@@ -142,8 +140,10 @@ class InterfaceManager:
         sender = "scoke0801@gmail.com"
         reciver = "scoke0801@daum.net"
         passwd = "dla753156"
-        mail_sender = MailSender(sender, reciver, passwd, self.List[0])
+        mail_sender = MailSender(sender, reciver, passwd, self.List[0], self.mail_entry)
         self.buttons[2].setHandlerFunc(mail_sender, mail_sender.Send)
+
+        self.buttons[1].setConnection2List_(self.lib_lb)
 
     def RegistEntries(self):
         for entry in self.entries:
@@ -215,20 +215,32 @@ class InterfaceButton(Interface):
                 self.connList.AddBookElements(result)
 
         elif self.id == 1:
-            data = self.connList.getData()
-            index = data.find("title")
-            if index != -1:
-                #print("found")
-                #print(data[index + 8:])
-                d = data[index + 8: -4]
+            if len(self.connList_.curselection()) != 0:
+                sel = self.connList_.curselection()
+                title = self.connEntry.getData()
+                lib_text = (self.connList_.get(sel))
+                lib_code = libListReverse[lib_text]
+                print(lib_code)
 
-                data = LibSearchButtonHandler(data[index + 8: -4])
+                data = LibSearchSimpleHandler(title, lib_code)
 
                 if data != None:
                     self.connList.AddLibDataDom(data)
-
                 else:
-                    print("nope")
+                    print("Nope")
+            else:
+                data = self.connList.getData()
+                index = data.find("title")
+                if index != -1:
+                    d = data[index + 8: -4]
+
+                    data = LibSearchButtonHandler(data[index + 8: -4])
+                    self.connList.clearLabelImage()
+                    if data != None:
+                        self.connList.AddLibDataDom(data)
+
+                    else:
+                        print("nope")
 
             # LibSearchButtonHandler('도둑')
 
@@ -248,6 +260,9 @@ class InterfaceButton(Interface):
 
     def setConnection2List(self, interface):
         self.connList = interface
+
+    def setConnection2List_(self, interface):
+        self.connList_ = interface
 
     def setConnections(self, interfaces):
         for interface in interfaces:
@@ -440,6 +455,9 @@ class InterfaceList(Interface):
         #self.listBox.delete(0, END)
         #self.count = 1
 
+    def clearLabelImage(self):
+        #self.connected_label.eraseImage()
+        self.connected_label.unsetUrls()
 
     def getData(self):
         return self.lb._get_selected_items()
@@ -459,7 +477,7 @@ class InterfaceLabel(Interface):
         pass
 
     def Create(self):
-        self.frame = Frame(self.parent, bd = 1, relief=RAISED, width= 100, height= 100, bg = 'gray')
+        self.frame = Frame(self.parent, bd = 1, relief=RAISED, width= 100, height= 100, bg = 'white')
 
         #self.label = Label(self.frame, height=100, width=100)
         pass
@@ -506,6 +524,11 @@ class InterfaceLabel(Interface):
 
     def setUrls(self, url_list):
         self.url_list = url_list
+
+    def unsetUrls(self):
+        self.url_list = None
+    def eraseImage(self):
+        self.label.image = None
 
 def PrintMenu():
     print("---------검색 기준--------------")

@@ -465,6 +465,9 @@ class InterfaceLabel(Interface):
     def setUrls(self, url_list):
         self.url_list = url_list
 
+    def unsetUrls(self):
+        self.url_list = None
+
 def PrintMenu():
     print("---------검색 기준--------------")
     print("(A/a) --- 소장 도서관")
